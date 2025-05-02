@@ -18,7 +18,7 @@ public class UIButtonScript : MonoBehaviour
     
     public void StartGame()
     {
-        SceneManager.LoadScene("Bedroom");
+        SceneManager.LoadScene("Appartment");
     }
 
     public void QuitGame()
