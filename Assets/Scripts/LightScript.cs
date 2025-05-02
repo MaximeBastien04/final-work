@@ -17,11 +17,8 @@ public class LightSwitch : MonoBehaviour
 
         if (lightChild != null)
         {
-            Debug.Log("child found");
             lightChild.SetActive(false); // Ensure the light is off at the start
         }
-        else
-            Debug.Log("child not found");
     }
 
     private void Update()

@@ -20,6 +20,11 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        Movement();
+    }
+
+    private void Movement()
+    {
         float moveInput = 0f;
 
         if (Input.GetKey(KeyCode.D))
@@ -42,6 +47,5 @@ public class PlayerScript : MonoBehaviour
         }
 
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-
     }
 }
