@@ -1,0 +1,10 @@
+using TMPro;
+using UnityEngine;
+
+public class ObjectiveScript : MonoBehaviour
+{
+    public void ChangeObjective(string objective)
+    {
+        gameObject.GetComponent<TextMeshProUGUI>().text = objective;
+    }
+}
