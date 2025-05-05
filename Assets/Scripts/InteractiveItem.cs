@@ -1,25 +1,40 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InteractiveItem : MonoBehaviour
 {
-    private GameObject interactButton;
+    private SpriteRenderer interactSprite;
     private Animator playerAnimator;
     private bool inRange = false;
+
+    // Interact Button Animations
+    private Coroutine fadeCoroutine;
+    private Coroutine pressResetCoroutine;
+    private float pressedButtonSpriteDuration = 0.25f;
+
+
+    public Sprite eKeyIdle;
+    public Sprite eKeyPressed;
 
     void Start()
     {
         playerAnimator = GameObject.FindWithTag("Player").GetComponent<Animator>();
 
-        interactButton = gameObject.transform.Find("InteractButton").GameObject();
-        interactButton.SetActive(false);
+        interactSprite = gameObject.transform.Find("InteractButton").GetComponent<SpriteRenderer>();
+        interactSprite.color = new Color(1f, 1f, 1f, 0f);
+        interactSprite.sprite = eKeyIdle;
     }
 
     void Update()
     {
         if (inRange && Input.GetKeyDown(KeyCode.E))
         {
-            // Glass drink animation
+            interactSprite.sprite = eKeyPressed;
+
+            if (pressResetCoroutine != null) StopCoroutine(pressResetCoroutine);
+            pressResetCoroutine = StartCoroutine(ResetSpriteAfterDelay(pressedButtonSpriteDuration));
+
             if (gameObject.name == "Glass")
             {
                 Debug.Log("Drink glass animation");
@@ -28,19 +43,18 @@ public class InteractiveItem : MonoBehaviour
             else if (gameObject.name == "AppartmentDoor")
             {
                 Debug.Log("Go outside");
-                // Play door sound
-                // Load outside scene
+                SceneManager.LoadScene("Outside");
             }
         }
     }
 
-    // GameObject has to have a 2D collider that is set to trigger and have child named InteractButton.
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Entered trigger with: " + other.name);
         if (other.name == "Player")
         {
-            interactButton.SetActive(true);
+            if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+            fadeCoroutine = StartCoroutine(FadeSprite(interactSprite, 0f, 1f, 0.1f));
             inRange = true;
         }
     }
@@ -50,8 +64,38 @@ public class InteractiveItem : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            interactButton.SetActive(false);
+            if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
+            fadeCoroutine = StartCoroutine(FadeSprite(interactSprite, 1f, 0f, 0.1f));
             inRange = false;
         }
     }
+
+
+    // Interact button fade animation
+    private IEnumerator FadeSprite(SpriteRenderer spriteRenderer, float startAlpha, float endAlpha, float duration)
+    {
+        float elapsed = 0f;
+        Color color = spriteRenderer.color;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            color.a = Mathf.Lerp(startAlpha, endAlpha, t);
+            spriteRenderer.color = color;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        color.a = endAlpha;
+        spriteRenderer.color = color;
+    }
+
+
+    // Interact button pressed sprite animation
+    private IEnumerator ResetSpriteAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        interactSprite.sprite = eKeyIdle;
+    }
+
 }
