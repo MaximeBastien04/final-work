@@ -339,6 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d7284dc470de6499d5c0357a9d6f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eKeyIdle: {fileID: 0}
+  eKeyPressed: {fileID: 0}
 --- !u!61 &194353675
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -981,6 +983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d7284dc470de6499d5c0357a9d6f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eKeyIdle: {fileID: 0}
+  eKeyPressed: {fileID: 0}
 --- !u!212 &734145323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2146,6 +2150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d7284dc470de6499d5c0357a9d6f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eKeyIdle: {fileID: 0}
+  eKeyPressed: {fileID: 0}
 --- !u!61 &1630911604
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2378,7 +2384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7432957752874490803, guid: 4c15e3d35e6c4874ab7b995ac538e943, type: 3}
       propertyPath: m_FlipX
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7432957752874490803, guid: 4c15e3d35e6c4874ab7b995ac538e943, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
