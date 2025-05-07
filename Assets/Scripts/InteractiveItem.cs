@@ -3,8 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class InteractiveItem : MonoBehaviour
 {
+    public GameObject player;
     public Animator playerAnimator;
     public ObjectiveScript objectiveScript;
+
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,7 +31,7 @@ public class InteractiveItem : MonoBehaviour
     public void TriggerInteraction()
     {
         string name = gameObject.name;
-        playerAnimator = GameObject.FindWithTag("Player").GetComponent<Animator>();
+        playerAnimator = player.GetComponent<Animator>();
 
         if (name == "Glass")
         {
@@ -47,7 +53,8 @@ public class InteractiveItem : MonoBehaviour
         }
         else if (name == "WorkChair")
         {
-
+            WorkMinigame workMinigame = GameObject.Find("WorkMinigameManager").GetComponent<WorkMinigame>();
+            workMinigame.playerIsSitting = true;
         }
     }
 }
