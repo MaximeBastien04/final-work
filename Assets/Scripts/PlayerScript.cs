@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    private bool canMove = true;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -18,10 +19,17 @@ public class PlayerScript : MonoBehaviour
         animator.SetBool("isWalking", false);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        Movement();
+        if (canMove)
+            Movement();
+        else
+            animator.SetBool("isWalking", false);
     }
+
+
+    public void EnableMovement() => canMove = true;
+    public void DisableMovement() => canMove = false;
 
     private void Movement()
     {
@@ -30,22 +38,33 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             moveInput = 1f;
-            spriteRenderer.flipX = true;
+
+            if (transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
             animator.SetBool("isWalking", true);
         }
-
-        if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
             moveInput = -1f;
-            spriteRenderer.flipX = false;
+
+            if (transform.localScale.x < 0)
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
             animator.SetBool("isWalking", true);
         }
-
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        else
         {
             animator.SetBool("isWalking", false);
         }
 
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+    }
+
+    public void PutDown()
+    {
+        GameObject.Find("Glass").GetComponent<GlassPickup>().PutDown();
     }
 }
