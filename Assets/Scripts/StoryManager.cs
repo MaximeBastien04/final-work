@@ -30,21 +30,20 @@ public class StoryManager : MonoBehaviour
     // Called after player finishes a work day
     public void CompleteWorkDay()
     {
-        workCounter++;
 
-        if (workCounter < 3)
-        {
-            LoadScene("Room_Morning");
-        }
-        else if (workCounter == 3)
-        {
-            LoadScene("ClubParty");
-        }
-        else if (workCounter == 4)
-        {
-            hasTakenPills = true;
-            LoadScene("ClubPills");
-        }
+        // if (workCounter < 3)
+        // {
+        //     LoadScene("Room_Morning");
+        // }
+        // else if (workCounter == 3)
+        // {
+        //     LoadScene("ClubParty");
+        // }
+        // else if (workCounter == 4)
+        // {
+        //     hasTakenPills = true;
+        //     LoadScene("ClubPills");
+        // }
     }
 
     // Transition to the bridge scene and register player choice
