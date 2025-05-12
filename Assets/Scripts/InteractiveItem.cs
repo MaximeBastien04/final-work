@@ -6,6 +6,7 @@ public class InteractiveItem : MonoBehaviour
     public GameObject player;
     public Animator playerAnimator;
     public ObjectiveScript objectiveScript;
+    public StoryManager storyManager;
     public BackgroundColorManager bgcManager;
     public AudioManager audioManager;
 
@@ -13,6 +14,7 @@ public class InteractiveItem : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         objectiveScript = GameObject.Find("ObjectiveManager").GetComponent<ObjectiveScript>();
+        storyManager = GameObject.Find("StoryManager").GetComponent<StoryManager>();
         bgcManager = GameObject.Find("BackgroundColor").GetComponent<BackgroundColorManager>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
@@ -54,12 +56,12 @@ public class InteractiveItem : MonoBehaviour
         {
             SceneManager.LoadScene("Outside");
             objectiveScript.ChangeObjective("Work");
-            objectiveScript.GoToWork();
+            storyManager.GoToWork();
             audioManager.PlayClip(audioManager.doorOpen);
         }
         else if (name == "WorkDoor")
         {
-            objectiveScript.ChangeObjective("Got to work, Again.");
+            objectiveScript.ChangeObjective("Go to work, Again.");
             SceneManager.LoadScene("Appartment");
             audioManager.PlayClip(audioManager.doorOpen);
         }
@@ -70,8 +72,8 @@ public class InteractiveItem : MonoBehaviour
         }
         else if (name == "Printer")
         {
-            // Paper coming out of printer animation
-            // audioManager.PlayClip(audioManager.printer);
+            Printer printer = GetComponent<Printer>();
+            printer.PrintPaper();
         }
 
     }

@@ -70,7 +70,7 @@ public class WorkMinigame : MonoBehaviour
                     mainCamera.target = player.transform;
                     player.SetActive(true);
                     player.GetComponent<PlayerScript>().EnableMovement();
-                    player.GetComponent<Animator>().SetTrigger("Idle");
+                    // player.GetComponent<Animator>().SetTrigger("Idle");
                     playerIsSitting = false;
                     playerSit.SetActive(false);
                     interactableItem.GetComponent<BoxCollider2D>().enabled = false;
