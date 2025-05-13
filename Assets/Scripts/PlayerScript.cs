@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class PlayerScript : MonoBehaviour
             Movement();
         else
             animator.SetBool("isWalking", false);
+
+        if (SceneManager.GetSceneByName("Outside").name == "Outside")
+        {
+            canMove = false;
+        }
     }
 
 
