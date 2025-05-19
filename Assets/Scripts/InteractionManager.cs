@@ -62,7 +62,7 @@ public class InteractionManager : MonoBehaviour
             {
                 interactSprite.transform.position = new Vector3(currentTargetSprite.bounds.min.x - 0.5f, currentTargetPos.y + 1f, currentTargetPos.z);
             }
-            else if (currentTarget.name == "WorkDoor")
+            else if (currentTarget.name == "WorkDoor" || currentTarget.name == "AppartmentDoorOutside")
             {
                 interactSprite.transform.position = new Vector3(currentTargetSprite.bounds.max.x + 0.5f, currentTargetPos.y + 1f, currentTargetPos.z);
             }

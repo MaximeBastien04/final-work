@@ -59,6 +59,11 @@ public class InteractiveItem : MonoBehaviour
             SceneManager.LoadScene("Outside");
             audioManager.PlayClip(audioManager.doorOpen);
         }
+        else if (name == "AppartmentDoorOutside")
+        {
+            SceneManager.LoadScene("Appartment");
+            audioManager.PlayClip(audioManager.doorOpen);
+        }
         else if (name == "WorkDoor")
         {
             // Load outside of work
@@ -74,6 +79,9 @@ public class InteractiveItem : MonoBehaviour
             Printer printer = GetComponent<Printer>();
             printer.PrintPaper();
         }
-
+        else if (name == "Grandma")
+        {
+            GetComponent<DialogueManager>().Talk();
+        }
     }
 }
