@@ -72,4 +72,10 @@ public class BackgroundColorManager : MonoBehaviour
             Debug.LogWarning("Mood not found: " + mood);
         }
     }
+
+    public void UpdateBackgroundColor()
+    {
+        Color currentColor = GetComponent<SpriteRenderer>().color;
+        targetColor = new Color(currentColor.r + (5f / 255f), currentColor.g + (4f / 255f), currentColor.b + (1f / 255f));
+    }
 }

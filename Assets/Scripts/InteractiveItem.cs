@@ -9,11 +9,12 @@ public class InteractiveItem : MonoBehaviour
     public BackgroundColorManager bgcManager;
     public AudioManager audioManager;
     private InteractionManager interactionManager;
+    private bool hasBeenInteracted = false;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        storyManager = GameObject.Find("StoryManager").GetComponent<StoryManager>();
+        // storyManager = GameObject.Find("StoryManager").GetComponent<StoryManager>();
         bgcManager = GameObject.Find("BackgroundColor").GetComponent<BackgroundColorManager>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
@@ -82,6 +83,19 @@ public class InteractiveItem : MonoBehaviour
         else if (name == "Grandma")
         {
             GetComponent<DialogueManager>().Talk();
+            if (!hasBeenInteracted)
+            {
+                bgcManager.UpdateBackgroundColor();
+            }
+        }
+
+
+
+
+        // check to only make interactable items interactable once
+        if (!hasBeenInteracted)
+        {
+            hasBeenInteracted = true;
         }
     }
 }
