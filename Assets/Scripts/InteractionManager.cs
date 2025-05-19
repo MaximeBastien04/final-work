@@ -13,6 +13,7 @@ public class InteractionManager : MonoBehaviour
     private Coroutine fadeCoroutine;
     private Coroutine pressResetCoroutine;
     private GameObject currentTarget;
+    public int interactionCounter = 0;
 
     private float pressedDuration = 0.25f;
 
@@ -107,5 +108,11 @@ public class InteractionManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         interactSprite.sprite = eKeyIdle;
+    }
+
+    public void IncreaseCounter()
+    {
+        interactionCounter++;
+        Debug.Log("Interaction amount: " + interactionCounter);
     }
 }

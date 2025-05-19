@@ -74,7 +74,6 @@ public class WorkMinigame : MonoBehaviour
                     playerIsSitting = false;
                     playerSit.SetActive(false);
                     interactableItem.GetComponent<BoxCollider2D>().enabled = false;
-                    GameObject.Find("ObjectiveManager").GetComponent<ObjectiveScript>().ChangeObjective("Go to your appartment");
                 }
             }
         }

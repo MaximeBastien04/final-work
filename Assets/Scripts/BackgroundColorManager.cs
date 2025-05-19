@@ -9,6 +9,11 @@ public class BackgroundColorManager : MonoBehaviour
     private Color targetColor;
     public float lerpSpeed = 2f;
 
+    // Follow Player
+    public float followSpeed = 2f;
+    public float yOffset = 1f;
+    public Transform target;
+
     private Dictionary<string, Color> moodColors = new Dictionary<string, Color>()
     {
         { "Happy", new Color(1f, 0.8f, 0.3f) },       // bright yellow-orange
@@ -37,6 +42,10 @@ public class BackgroundColorManager : MonoBehaviour
     void Update()
     {
         spriteRenderer.color = Color.Lerp(spriteRenderer.color, targetColor, lerpSpeed * Time.deltaTime);
+
+        // Follow Player
+        target = GameObject.FindWithTag("Player").transform;
+        transform.position = new Vector3(target.position.x, target.position.y + yOffset, transform.position.z);
     }
 
     /// Set background color using a Color

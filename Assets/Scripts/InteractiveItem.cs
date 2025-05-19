@@ -5,15 +5,14 @@ public class InteractiveItem : MonoBehaviour
 {
     public GameObject player;
     public Animator playerAnimator;
-    public ObjectiveScript objectiveScript;
     public StoryManager storyManager;
     public BackgroundColorManager bgcManager;
     public AudioManager audioManager;
+    private InteractionManager interactionManager;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        objectiveScript = GameObject.Find("ObjectiveManager").GetComponent<ObjectiveScript>();
         storyManager = GameObject.Find("StoryManager").GetComponent<StoryManager>();
         bgcManager = GameObject.Find("BackgroundColor").GetComponent<BackgroundColorManager>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
@@ -39,11 +38,13 @@ public class InteractiveItem : MonoBehaviour
     {
         string name = gameObject.name;
         playerAnimator = player.GetComponent<Animator>();
+        interactionManager = GameObject.Find("InteractionManager").GetComponent<InteractionManager>();
 
         if (name == "Glass")
         {
             GlassPickup glassPickup = GetComponent<GlassPickup>();
             glassPickup.PickUp();
+            interactionManager.IncreaseCounter();
             // audioManager.PlayClip(audioManager.drinkGlass);
         }
         else if (name == "LightSwitch")
@@ -54,15 +55,13 @@ public class InteractiveItem : MonoBehaviour
         }
         else if (name == "AppartmentDoor")
         {
+            // only make this available if tutorial is done
             SceneManager.LoadScene("Outside");
-            objectiveScript.ChangeObjective("Work");
-            storyManager.GoToWork();
             audioManager.PlayClip(audioManager.doorOpen);
         }
         else if (name == "WorkDoor")
         {
-            objectiveScript.ChangeObjective("Go to work, Again.");
-            SceneManager.LoadScene("Appartment");
+            // Load outside of work
             audioManager.PlayClip(audioManager.doorOpen);
         }
         else if (name == "WorkChair")

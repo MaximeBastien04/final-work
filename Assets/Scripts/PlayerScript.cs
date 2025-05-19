@@ -26,11 +26,6 @@ public class PlayerScript : MonoBehaviour
             Movement();
         else
             animator.SetBool("isWalking", false);
-
-        if (SceneManager.GetSceneByName("Outside").name == "Outside")
-        {
-            canMove = false;
-        }
     }
 
 
