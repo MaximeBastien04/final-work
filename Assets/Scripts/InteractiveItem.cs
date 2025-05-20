@@ -11,6 +11,7 @@ public class InteractiveItem : MonoBehaviour
     public AudioManager audioManager;
     private InteractionManager interactionManager;
     private bool hasBeenInteracted = false;
+    private AudioSource discoverySFX;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class InteractiveItem : MonoBehaviour
         bgcManager = GameObject.Find("BackgroundColor").GetComponent<BackgroundColorManager>();
         postProManager = GameObject.Find("Global Volume").GetComponent<PostProcessingManager>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        discoverySFX = GameObject.Find("DiscoverySFX").GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -98,8 +100,22 @@ public class InteractiveItem : MonoBehaviour
         else if (name == "Dog")
         {
             GetComponent<Animator>().SetTrigger("bark");
+            GetComponent<AudioSource>().Play();
             if (!hasBeenInteracted)
             {
+                bgcManager.UpdateBackgroundColor();
+                postProManager.DecreaseVignetteSmoothly();
+            }
+        }
+        else if (name == "FlowerGarden")
+        {
+        }
+
+        if (gameObject.tag == "HappinessIncrease")
+        {
+            if (!hasBeenInteracted)
+            {
+                discoverySFX.Play();
                 bgcManager.UpdateBackgroundColor();
                 postProManager.DecreaseVignetteSmoothly();
             }
@@ -109,9 +125,9 @@ public class InteractiveItem : MonoBehaviour
 
 
         // check to only make interactable items interactable once
-            if (!hasBeenInteracted)
-            {
-                hasBeenInteracted = true;
-            }
+        if (!hasBeenInteracted)
+        {
+            hasBeenInteracted = true;
+        }
     }
 }

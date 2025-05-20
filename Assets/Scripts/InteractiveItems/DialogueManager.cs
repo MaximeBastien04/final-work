@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    private GameObject dialoguePanel;
+    [SerializeField] private GameObject dialoguePanel;
     private TextMeshProUGUI dialogueText;
     public string[] dialogue;
     private int index = 0;
@@ -16,17 +16,11 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        dialoguePanel = GameObject.Find("DialoguePanel");
-        dialogueText = GameObject.Find("DialogueText").GetComponent<TextMeshProUGUI>();
+        dialogueText = dialoguePanel.transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
         dialogueText.text = "";
         dialoguePanel.SetActive(false);
     }
-
-    void Update()
-    {
-
-    }
-
+    
     public void Talk()
     {
         if (!dialoguePanel.activeInHierarchy)
