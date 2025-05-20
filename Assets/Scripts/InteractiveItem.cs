@@ -92,7 +92,7 @@ public class InteractiveItem : MonoBehaviour
             if (!hasBeenInteracted)
             {
                 bgcManager.UpdateBackgroundColor();
-                postProManager.DecreaseVignette();
+                postProManager.DecreaseVignetteSmoothly();
             }
         }
         else if (name == "Dog")
@@ -101,7 +101,7 @@ public class InteractiveItem : MonoBehaviour
             if (!hasBeenInteracted)
             {
                 bgcManager.UpdateBackgroundColor();
-                postProManager.DecreaseVignette();
+                postProManager.DecreaseVignetteSmoothly();
             }
         }
 
