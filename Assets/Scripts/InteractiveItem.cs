@@ -7,6 +7,7 @@ public class InteractiveItem : MonoBehaviour
     public Animator playerAnimator;
     public StoryManager storyManager;
     public BackgroundColorManager bgcManager;
+    private PostProcessingManager postProManager;
     public AudioManager audioManager;
     private InteractionManager interactionManager;
     private bool hasBeenInteracted = false;
@@ -16,6 +17,7 @@ public class InteractiveItem : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         // storyManager = GameObject.Find("StoryManager").GetComponent<StoryManager>();
         bgcManager = GameObject.Find("BackgroundColor").GetComponent<BackgroundColorManager>();
+        postProManager = GameObject.Find("Global Volume").GetComponent<PostProcessingManager>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
@@ -74,6 +76,10 @@ public class InteractiveItem : MonoBehaviour
         {
             WorkMinigame workMinigame = GameObject.Find("WorkMinigameManager").GetComponent<WorkMinigame>();
             workMinigame.playerIsSitting = true;
+            if (!hasBeenInteracted)
+            {
+                bgcManager.UpdateBackgroundColor();
+            }
         }
         else if (name == "Printer")
         {
@@ -86,6 +92,16 @@ public class InteractiveItem : MonoBehaviour
             if (!hasBeenInteracted)
             {
                 bgcManager.UpdateBackgroundColor();
+                postProManager.DecreaseVignette();
+            }
+        }
+        else if (name == "Dog")
+        {
+            GetComponent<Animator>().SetTrigger("bark");
+            if (!hasBeenInteracted)
+            {
+                bgcManager.UpdateBackgroundColor();
+                postProManager.DecreaseVignette();
             }
         }
 
@@ -93,9 +109,9 @@ public class InteractiveItem : MonoBehaviour
 
 
         // check to only make interactable items interactable once
-        if (!hasBeenInteracted)
-        {
-            hasBeenInteracted = true;
-        }
+            if (!hasBeenInteracted)
+            {
+                hasBeenInteracted = true;
+            }
     }
 }

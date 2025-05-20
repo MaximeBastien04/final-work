@@ -76,6 +76,13 @@ public class BackgroundColorManager : MonoBehaviour
     public void UpdateBackgroundColor()
     {
         Color currentColor = GetComponent<SpriteRenderer>().color;
-        targetColor = new Color(currentColor.r + (5f / 255f), currentColor.g + (4f / 255f), currentColor.b + (1f / 255f));
+        if (currentColor.r < (250f / 255f) && currentColor.g < (210f / 255f) && currentColor.b < (90f / 255f))
+        {
+            targetColor = new Color(currentColor.r + (10f / 255f), currentColor.g + (8f / 255f), currentColor.b + (2f / 255f));
+        }
+        else
+        {
+            Debug.Log("Protagonist is happy!");
+        }
     }
 }
