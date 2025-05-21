@@ -71,23 +71,28 @@ public class InteractiveItem : MonoBehaviour
         else if (name == "AppartmentDoor")
         {
             // only make this available if tutorial is done
+            SceneTransitionManager.Instance.lastExitDoor = name;
             SceneManager.LoadScene("Outside");
             audioManager.PlayClip(audioManager.doorOpen);
         }
         else if (name == "AppartmentDoorOutside")
         {
+            SceneTransitionManager.Instance.lastExitDoor = name;
             SceneManager.LoadScene("Appartment");
             audioManager.PlayClip(audioManager.doorOpen);
         }
         else if (name == "WorkDoorOutside")
         {
+            SceneTransitionManager.Instance.lastExitDoor = name;
             SceneManager.LoadScene("Work");
             audioManager.PlayClip(audioManager.doorOpen);
         }
         else if (name == "WorkDoor")
         {
+            SceneTransitionManager.Instance.lastExitDoor = name;
             SceneManager.LoadScene("Outside"); // at position of door
             audioManager.PlayClip(audioManager.doorOpen);
+            // player.transform.position = new Vector3(0,)
         }
         else if (name == "WorkChair")
         {
