@@ -15,6 +15,7 @@ public class InteractiveItem : MonoBehaviour
     private bool hasBeenInteracted = false;
     private int interactionAmount = 0;
     private AudioSource discoverySFX;
+    private static bool hasWorked = false;
 
     [Header("Ice Cream Child Quest")]
     private bool playerHasIceCream = false;
@@ -78,19 +79,26 @@ public class InteractiveItem : MonoBehaviour
             SceneManager.LoadScene("Appartment");
             audioManager.PlayClip(audioManager.doorOpen);
         }
+        else if (name == "WorkDoorOutside")
+        {
+            SceneManager.LoadScene("Work");
+            audioManager.PlayClip(audioManager.doorOpen);
+        }
         else if (name == "WorkDoor")
         {
-            // Load outside of work
+            SceneManager.LoadScene("Outside"); // at position of door
             audioManager.PlayClip(audioManager.doorOpen);
         }
         else if (name == "WorkChair")
         {
-            WorkMinigame workMinigame = GameObject.Find("WorkMinigameManager").GetComponent<WorkMinigame>();
-            workMinigame.playerIsSitting = true;
-            // if (!hasBeenInteracted)
-            // {
-            //     bgcManager.UpdateBackgroundColor();
-            // }
+            if (!hasWorked)
+            {
+                WorkMinigame workMinigame = GameObject.Find("WorkMinigameManager").GetComponent<WorkMinigame>();
+                workMinigame.playerIsSitting = true;
+                hasWorked = true;
+            }
+            else
+                GetComponent<BoxCollider2D>().enabled = false;
         }
         else if (name == "Printer")
         {
@@ -115,17 +123,13 @@ public class InteractiveItem : MonoBehaviour
         }
         else if (name == "Dog")
         {
+            // Dog pet animation
             GetComponent<Animator>().SetTrigger("bark");
             GetComponent<AudioSource>().Play();
-            // if (!hasBeenInteracted)
-            // {
-            //     bgcManager.UpdateBackgroundColor();
-            //     postProManager.DecreaseVignetteSmoothly();
-            // }
         }
         else if (name == "FlowerGarden")
         {
-
+            GetComponent<DialogueManager>().Talk();
         }
         else if (name == "IceCreamVendor")
         {

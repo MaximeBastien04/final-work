@@ -8,6 +8,22 @@ public class PostProcessingManager : MonoBehaviour
     private Vignette vignette;
     private Coroutine vignetteRoutine;
 
+    public static PostProcessingManager Instance;
+
+    
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         Volume volume = GameObject.Find("Global Volume").GetComponent<Volume>();

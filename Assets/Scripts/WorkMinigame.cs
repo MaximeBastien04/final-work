@@ -9,10 +9,12 @@ public class WorkMinigame : MonoBehaviour
     public GameObject playerSit;
     public float fillSpeed = 0.01f;
     public GameObject MinigameVisual;
+    public BackgroundColorManager bgcManager;
+    private PostProcessingManager postProManager;
 
     [Header("Audio")]
     public AudioSource audioSource;
-    // public AudioClip keyboardTyping;
+    private AudioSource discoverySFX;
 
     public bool playerIsSitting;
     private CameraFollow mainCamera;
@@ -25,6 +27,9 @@ public class WorkMinigame : MonoBehaviour
         completionCircle.fillAmount = 0;
         mainCamera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
         player = GameObject.FindWithTag("Player");
+        discoverySFX = GameObject.Find("DiscoverySFX").GetComponent<AudioSource>();
+        bgcManager = GameObject.Find("BackgroundColor").GetComponent<BackgroundColorManager>();
+        postProManager = GameObject.Find("Global Volume").GetComponent<PostProcessingManager>();
     }
 
     void Update()
@@ -37,8 +42,10 @@ public class WorkMinigame : MonoBehaviour
         if (playerIsSitting)
         {
             mainCamera.target = playerSit.transform;
-            player.SetActive(false);
+            // player.SetActive(false);
+            player.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
             player.GetComponent<PlayerScript>().DisableMovement();
+            GameObject.Find("WorkChair").GetComponent<BoxCollider2D>().enabled = false;
             playerSit.SetActive(true);
 
             MinigameVisual.SetActive(true);
@@ -68,12 +75,14 @@ public class WorkMinigame : MonoBehaviour
                 else if (completionCircle.fillAmount == 1)
                 {
                     mainCamera.target = player.transform;
-                    player.SetActive(true);
+                    player.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1);
                     player.GetComponent<PlayerScript>().EnableMovement();
-                    // player.GetComponent<Animator>().SetTrigger("Idle");
                     playerIsSitting = false;
                     playerSit.SetActive(false);
                     interactableItem.GetComponent<BoxCollider2D>().enabled = false;
+                    discoverySFX.Play();
+                    bgcManager.UpdateBackgroundColor();
+                    postProManager.DecreaseVignetteSmoothly();
                 }
             }
         }

@@ -44,8 +44,9 @@ public class BackgroundColorManager : MonoBehaviour
         spriteRenderer.color = Color.Lerp(spriteRenderer.color, targetColor, lerpSpeed * Time.deltaTime);
 
         // Follow Player
-        target = GameObject.FindWithTag("Player").transform;
-        transform.position = new Vector3(target.position.x, target.position.y + yOffset, transform.position.z);
+        target = GameObject.FindWithTag("Player")?.transform;
+        if (target != null)
+            transform.position = new Vector3(target.position.x, target.position.y + yOffset, transform.position.z);
     }
 
     /// Set background color using a Color

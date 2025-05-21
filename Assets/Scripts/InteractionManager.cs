@@ -64,7 +64,7 @@ public class InteractionManager : MonoBehaviour
             SpriteRenderer currentTargetSprite = currentTarget.GetComponent<SpriteRenderer>();
             Vector3 currentTargetPos = currentTarget.transform.position;
 
-            if (currentTarget.name == "AppartmentDoor")
+            if (currentTarget.name == "AppartmentDoor" || currentTarget.name == "WorkDoorOutside" )
             {
                 interactSprite.transform.position = new Vector3(currentTargetSprite.bounds.min.x - 0.5f, currentTargetPos.y + 1f, currentTargetPos.z);
             }
