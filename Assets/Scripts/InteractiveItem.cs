@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,8 +11,16 @@ public class InteractiveItem : MonoBehaviour
     private PostProcessingManager postProManager;
     public AudioManager audioManager;
     private InteractionManager interactionManager;
+    private GetIceCream getIceCream;
     private bool hasBeenInteracted = false;
+    private int interactionAmount = 0;
     private AudioSource discoverySFX;
+
+    [Header("Ice Cream Child Quest")]
+    private bool playerHasIceCream = false;
+    [SerializeField] private GameObject iceCream;
+
+
 
     void Start()
     {
@@ -78,10 +87,10 @@ public class InteractiveItem : MonoBehaviour
         {
             WorkMinigame workMinigame = GameObject.Find("WorkMinigameManager").GetComponent<WorkMinigame>();
             workMinigame.playerIsSitting = true;
-            if (!hasBeenInteracted)
-            {
-                bgcManager.UpdateBackgroundColor();
-            }
+            // if (!hasBeenInteracted)
+            // {
+            //     bgcManager.UpdateBackgroundColor();
+            // }
         }
         else if (name == "Printer")
         {
@@ -90,26 +99,85 @@ public class InteractiveItem : MonoBehaviour
         }
         else if (name == "Grandma")
         {
-            GetComponent<DialogueManager>().Talk();
-            if (!hasBeenInteracted)
+            DialogueManager dialogueManager = GetComponent<DialogueManager>();
+
+            dialogueManager.Talk();
+            dialogueManager.OnFinalLineStarted += () =>
             {
-                bgcManager.UpdateBackgroundColor();
-                postProManager.DecreaseVignetteSmoothly();
-            }
+
+                gameObject.tag = "HappinessIncrease";
+                if (interactionAmount == 0)
+                {
+                    hasBeenInteracted = false;
+                    interactionAmount++;
+                }
+            };
         }
         else if (name == "Dog")
         {
             GetComponent<Animator>().SetTrigger("bark");
             GetComponent<AudioSource>().Play();
-            if (!hasBeenInteracted)
-            {
-                bgcManager.UpdateBackgroundColor();
-                postProManager.DecreaseVignetteSmoothly();
-            }
+            // if (!hasBeenInteracted)
+            // {
+            //     bgcManager.UpdateBackgroundColor();
+            //     postProManager.DecreaseVignetteSmoothly();
+            // }
         }
         else if (name == "FlowerGarden")
         {
+
         }
+        else if (name == "IceCreamVendor")
+        {
+            DialogueManager dialogueManager = GetComponent<DialogueManager>();
+            dialogueManager.Talk();
+            dialogueManager.OnFinalLineStarted += () =>
+            {
+                getIceCream = GetComponent<GetIceCream>();
+                getIceCream.IceCream();
+                playerHasIceCream = GetIceCream.iceCreamGiven;
+
+                gameObject.tag = "HappinessIncrease";
+                if (interactionAmount == 0)
+                {
+                    hasBeenInteracted = false;
+                    interactionAmount++;
+                }
+            };
+        }
+        else if (name == "Child")
+        {
+            DialogueManager dialogueManager = GetComponent<DialogueManager>();
+
+            if (GetIceCream.iceCreamGiven)
+            {
+                string[] newDialogue = { "You got ice cream for me?", "Thanks!" };
+                dialogueManager.ReplaceText(newDialogue);
+
+                dialogueManager.OnFinalLineStarted += () =>
+                {
+                    if (iceCream.activeSelf)
+                    {
+                        Transform leftHand = transform.Find("Stomach").Find("LowerTorso").Find("UpperTorso").Find("UpperLeftArm").Find("LowerLeftArm").Find("LeftHand");
+                        iceCream.transform.SetParent(leftHand);
+                        iceCream.transform.localPosition = new Vector3(0.2f, -0.15f, 0);
+                        iceCream.transform.localRotation = new Quaternion(0, 0, 210, 0);
+                        iceCream.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+                    }
+
+                    gameObject.tag = "HappinessIncrease";
+                    GetComponent<Animator>().SetTrigger("eat");
+                    if (interactionAmount == 0)
+                    {
+                        hasBeenInteracted = false;
+                        interactionAmount++;
+                    }
+                };
+            }
+
+            dialogueManager.Talk();
+        }
+
 
         if (gameObject.tag == "HappinessIncrease")
         {
@@ -120,9 +188,6 @@ public class InteractiveItem : MonoBehaviour
                 postProManager.DecreaseVignetteSmoothly();
             }
         }
-
-
-
 
         // check to only make interactable items interactable once
         if (!hasBeenInteracted)

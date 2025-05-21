@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,8 +9,10 @@ public class InteractionManager : MonoBehaviour
 
     public Sprite eKeyIdle;
     public Sprite eKeyPressed;
-
+    private GameObject spriteHolder;
+    private Animator buttonPress;
     private SpriteRenderer interactSprite;
+    [SerializeField] private AnimatorController buttonPressController;
     private Coroutine fadeCoroutine;
     private Coroutine pressResetCoroutine;
     private GameObject currentTarget;
@@ -31,20 +34,23 @@ public class InteractionManager : MonoBehaviour
 
     void Start()
     {
-        GameObject spriteHolder = new GameObject("GlobalInteractButton");
+        spriteHolder = new GameObject("GlobalInteractButton");
         spriteHolder.transform.SetParent(transform);
         interactSprite = spriteHolder.AddComponent<SpriteRenderer>();
         interactSprite.sortingOrder = 999;
         interactSprite.sprite = eKeyIdle;
         interactSprite.color = new Color(1f, 1f, 1f, 0f);
         interactSprite.transform.localScale = new Vector3(0.44f, 0.44f, 1f);
+
+        buttonPress = spriteHolder.AddComponent<Animator>();
+        buttonPress.runtimeAnimatorController = buttonPressController;
     }
 
     void Update()
     {
         if (currentTarget != null && Input.GetKeyDown(KeyCode.E))
         {
-            interactSprite.sprite = eKeyPressed;
+            buttonPress.SetTrigger("press");
             if (pressResetCoroutine != null) StopCoroutine(pressResetCoroutine);
             pressResetCoroutine = StartCoroutine(ResetSpriteAfterDelay(pressedDuration));
 

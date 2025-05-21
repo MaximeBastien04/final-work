@@ -9,6 +9,11 @@ public class DialogueManager : MonoBehaviour
     public string[] dialogue;
     private int index = 0;
     private bool playerIsClose;
+    private bool dialogueFinished = false;
+
+    public System.Action OnFinalLineStarted;
+
+
 
     public float wordSpeed = 0.06f;
 
@@ -20,12 +25,19 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         dialoguePanel.SetActive(false);
     }
-    
+
     public void Talk()
     {
         if (!dialoguePanel.activeInHierarchy)
         {
             dialoguePanel.SetActive(true);
+
+            // If finished, replay only the last sentence
+            if (dialogueFinished && dialogue.Length > 0)
+            {
+                index = dialogue.Length - 1;
+            }
+
             typingCoroutine = StartCoroutine(Typing());
         }
         else if (dialogueText.text == dialogue[index])
@@ -41,6 +53,8 @@ public class DialogueManager : MonoBehaviour
             StopCoroutine(typingCoroutine);
             typingCoroutine = null;
         }
+
+        dialogueFinished = true;
         dialogueText.text = "";
         index = 0;
         dialoguePanel.SetActive(false);
@@ -66,6 +80,11 @@ public class DialogueManager : MonoBehaviour
                 StopCoroutine(typingCoroutine);
             }
             typingCoroutine = StartCoroutine(Typing());
+
+            if (index == dialogue.Length - 1) // Just started last line
+            {
+                OnFinalLineStarted?.Invoke(); // 🔥 Trigger the tag update
+            }
         }
         else
         {
@@ -86,7 +105,22 @@ public class DialogueManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsClose = false;
-            RemoveText();
+
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+                typingCoroutine = null;
+            }
+
+            dialogueText.text = "";
+            dialoguePanel.SetActive(false);
         }
+    }
+
+    public void ReplaceText(string[] newText)
+    {
+        dialogue = newText;
+        dialogueFinished = false;
+        index = 0;
     }
 }
