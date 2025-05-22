@@ -15773,7 +15773,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -19397,8 +19397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decaaa4b62a04074eb73f998a3a281b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eKeyIdle: {fileID: 21300000, guid: 061439513126a274c98867418698480e, type: 3}
-  eKeyPressed: {fileID: 21300000, guid: 68954762a1a0fcf42acf297689c642bb, type: 3}
+  buttonPrefab: {fileID: 0}
   buttonPressController: {fileID: 9100000, guid: adba8428dfc07284cb779b0ee1491c23, type: 2}
   interactionCounter: 0
 --- !u!4 &1851246030

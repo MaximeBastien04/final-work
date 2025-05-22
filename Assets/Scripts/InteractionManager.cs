@@ -1,24 +1,23 @@
 using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
 public class InteractionManager : MonoBehaviour
 {
     public static InteractionManager Instance;
 
-    public Sprite eKeyIdle;
-    public Sprite eKeyPressed;
-    private GameObject spriteHolder;
-    private Animator buttonPress;
-    private SpriteRenderer interactSprite;
+    public GameObject buttonPrefab;
+    private GameObject interactionButton;
+    private SpriteRenderer buttonSpriteRenderer;
+    private Animator buttonAnimator;
+    private Light2D buttonGlow;
     [SerializeField] private AnimatorController buttonPressController;
     private Coroutine fadeCoroutine;
-    private Coroutine pressResetCoroutine;
     private GameObject currentTarget;
     public int interactionCounter = 0;
 
-    private float pressedDuration = 0.25f;
 
     void Awake()
     {
@@ -34,30 +33,20 @@ public class InteractionManager : MonoBehaviour
 
     void Start()
     {
-        spriteHolder = new GameObject("GlobalInteractButton");
-        spriteHolder.transform.SetParent(transform);
-        interactSprite = spriteHolder.AddComponent<SpriteRenderer>();
-        interactSprite.sortingOrder = 999;
-        interactSprite.sprite = eKeyIdle;
-        interactSprite.color = new Color(1f, 1f, 1f, 0f);
-        interactSprite.transform.localScale = new Vector3(0.44f, 0.44f, 1f);
+        interactionButton = Instantiate(buttonPrefab, transform);
 
-        buttonPress = spriteHolder.AddComponent<Animator>();
-        buttonPress.runtimeAnimatorController = buttonPressController;
+        buttonAnimator = interactionButton.GetComponent<Animator>();
+        buttonSpriteRenderer = interactionButton.GetComponent<SpriteRenderer>();
+        buttonGlow = interactionButton.GetComponent<Light2D>();
     }
 
     void Update()
     {
         if (currentTarget != null && Input.GetKeyDown(KeyCode.E))
         {
-            buttonPress.SetTrigger("press");
-            if (pressResetCoroutine != null) StopCoroutine(pressResetCoroutine);
-            pressResetCoroutine = StartCoroutine(ResetSpriteAfterDelay(pressedDuration));
-
+            // buttonAnimator.SetTrigger("press");
             currentTarget.GetComponent<InteractiveItem>()?.TriggerInteraction();
         }
-
-        // Position of Interact Button
 
         if (currentTarget != null)
         {
@@ -66,15 +55,19 @@ public class InteractionManager : MonoBehaviour
 
             if (currentTarget.name == "AppartmentDoor" || currentTarget.name == "WorkDoorOutside" )
             {
-                interactSprite.transform.position = new Vector3(currentTargetSprite.bounds.min.x - 0.5f, currentTargetPos.y + 1f, currentTargetPos.z);
+                interactionButton.transform.position = new Vector3(currentTargetSprite.bounds.min.x - 0.5f, currentTargetPos.y + 1f, currentTargetPos.z);
             }
-            else if (currentTarget.name == "WorkDoor" || currentTarget.name == "AppartmentDoorOutside" || currentTarget.name == "IceCreamVendor")
+            else if (currentTarget.name == "WorkDoor" || currentTarget.name == "AppartmentDoorOutside")
             {
-                interactSprite.transform.position = new Vector3(currentTargetSprite.bounds.max.x + 0.5f, currentTargetPos.y + 1f, currentTargetPos.z);
+                interactionButton.transform.position = new Vector3(currentTargetSprite.bounds.max.x + 0.5f, currentTargetPos.y + 1f, currentTargetPos.z);
+            }
+            else if (currentTarget.name == "IceCreamVendor")
+            {
+                interactionButton.transform.position = new Vector3(currentTargetPos.x, currentTargetPos.y + 3f, currentTargetPos.z);
             }
             else
             {
-                interactSprite.transform.position = new Vector3(currentTargetPos.x, currentTargetSprite.bounds.max.y + 1, currentTargetPos.z);
+                interactionButton.transform.position = new Vector3(currentTargetPos.x, currentTargetSprite.bounds.max.y + 1, currentTargetPos.z);
             }
         }
     }
@@ -83,37 +76,32 @@ public class InteractionManager : MonoBehaviour
     {
         currentTarget = target;
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-        fadeCoroutine = StartCoroutine(FadeSprite(0f, 1f, 0.1f));
+        fadeCoroutine = StartCoroutine(FadeSprite(0f, 1f, 0f, 3f, 0.3f));
     }
 
     public void HideButton()
     {
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-        fadeCoroutine = StartCoroutine(FadeSprite(1f, 0f, 0.1f));
+        fadeCoroutine = StartCoroutine(FadeSprite(1f, 0f, 3f, 0f, 0.3f));
         currentTarget = null;
     }
 
-    private IEnumerator FadeSprite(float startAlpha, float endAlpha, float duration)
+    private IEnumerator FadeSprite(float startAlpha, float endAlpha, float startIntensity, float endIntensity, float duration)
     {
         float elapsed = 0f;
-        Color color = interactSprite.color;
+        Color color = buttonSpriteRenderer.color;
 
         while (elapsed < duration)
         {
             color.a = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
-            interactSprite.color = color;
+            buttonGlow.intensity = Mathf.Lerp(startIntensity, endIntensity, elapsed / duration);
+            buttonSpriteRenderer.color = color;
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         color.a = endAlpha;
-        interactSprite.color = color;
-    }
-
-    private IEnumerator ResetSpriteAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        interactSprite.sprite = eKeyIdle;
+        buttonSpriteRenderer.color = color;
     }
 
     public void IncreaseCounter()
