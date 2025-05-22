@@ -26,7 +26,7 @@ public class PostProcessingManager : MonoBehaviour
 
     void Start()
     {
-        Volume volume = GameObject.Find("Global Volume").GetComponent<Volume>();
+        Volume volume = GetComponent<Volume>();
 
         if (volume.profile.TryGet(out vignette))
         {
@@ -47,7 +47,7 @@ public class PostProcessingManager : MonoBehaviour
             StopCoroutine(vignetteRoutine);
         }
 
-        vignetteRoutine = StartCoroutine(FadeVignetteTo(vignette.intensity.value - 0.015f, 1f));
+        vignetteRoutine = StartCoroutine(FadeVignetteTo(vignette.intensity.value - 0.03f, 1f));
     }
 
     private IEnumerator FadeVignetteTo(float target, float duration)

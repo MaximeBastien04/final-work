@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -24,6 +25,23 @@ public class DialogueManager : MonoBehaviour
         dialogueText = dialoguePanel.transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
         dialogueText.text = "";
         dialoguePanel.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "HomeScene")
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Talk();
+
+            }
+
+            if (dialogueFinished)
+            {
+                StartCoroutine(SceneTransitionManager.Instance.LoadSceneAfterDelay(5f, "Appartment"));
+            }
+        }
     }
 
     public void Talk()

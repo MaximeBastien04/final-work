@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : MonoBehaviour
 {
@@ -17,4 +19,11 @@ public class SceneTransitionManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public IEnumerator LoadSceneAfterDelay(float delay, string sceneName)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
+    }
+
 }

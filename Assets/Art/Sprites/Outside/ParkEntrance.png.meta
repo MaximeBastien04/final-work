@@ -1,0 +1,1560 @@
+fileFormatVersion: 2
+guid: 934c20d3e532b4f4f96f8524c8b5799a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3397644247194750663
+    second: ParkEntrance_0
+  - first:
+      213: 479588640572639687
+    second: ParkEntrance_1
+  - first:
+      213: -9115926185157193075
+    second: ParkEntrance_2
+  - first:
+      213: 8679664618001968195
+    second: ParkEntrance_3
+  - first:
+      213: 3212886161910970300
+    second: ParkEntrance_4
+  - first:
+      213: 4726170547822123194
+    second: ParkEntrance_5
+  - first:
+      213: -2133953497414994799
+    second: ParkEntrance_6
+  - first:
+      213: -3195532833909579517
+    second: ParkEntrance_7
+  - first:
+      213: 5754199458818346720
+    second: ParkEntrance_8
+  - first:
+      213: -6666748504378788996
+    second: ParkEntrance_9
+  - first:
+      213: 3400474465977099358
+    second: ParkEntrance_10
+  - first:
+      213: 6282465677224617496
+    second: ParkEntrance_11
+  - first:
+      213: -641425326321301890
+    second: ParkEntrance_12
+  - first:
+      213: -1986292562666847096
+    second: ParkEntrance_13
+  - first:
+      213: 4967954517854841881
+    second: ParkEntrance_14
+  - first:
+      213: 8956290281444213283
+    second: ParkEntrance_15
+  - first:
+      213: 1843340197745802269
+    second: ParkEntrance_16
+  - first:
+      213: -935443783798029903
+    second: ParkEntrance_17
+  - first:
+      213: -8738725117725663437
+    second: ParkEntrance_18
+  - first:
+      213: 5354118083745042414
+    second: ParkEntrance_19
+  - first:
+      213: 3492288498778227105
+    second: ParkEntrance_20
+  - first:
+      213: -3639916351204313620
+    second: ParkEntrance_21
+  - first:
+      213: 3571846486175738334
+    second: ParkEntrance_22
+  - first:
+      213: -670168555225677774
+    second: ParkEntrance_23
+  - first:
+      213: -6554654047417252851
+    second: ParkEntrance_24
+  - first:
+      213: -7387801121883274550
+    second: ParkEntrance_25
+  - first:
+      213: 9068042303939621849
+    second: ParkEntrance_26
+  - first:
+      213: -1991898521795901107
+    second: ParkEntrance_27
+  - first:
+      213: 3022971521450084755
+    second: ParkEntrance_28
+  - first:
+      213: 5796919152101035880
+    second: ParkEntrance_29
+  - first:
+      213: 2987497843793940008
+    second: ParkEntrance_30
+  - first:
+      213: 3458322462529288293
+    second: ParkEntrance_31
+  - first:
+      213: -5346440146471188818
+    second: ParkEntrance_32
+  - first:
+      213: -8021902176717301003
+    second: ParkEntrance_33
+  - first:
+      213: -5314184653870215249
+    second: ParkEntrance_34
+  - first:
+      213: -5115996117106167354
+    second: ParkEntrance_35
+  - first:
+      213: 7937222850706269166
+    second: ParkEntrance_36
+  - first:
+      213: -4835518994051499583
+    second: ParkEntrance_37
+  - first:
+      213: 6886562626544830549
+    second: ParkEntrance_38
+  - first:
+      213: 9147077515155911554
+    second: ParkEntrance_39
+  - first:
+      213: 6087536897395998667
+    second: ParkEntrance_40
+  - first:
+      213: -995465375632343925
+    second: ParkEntrance_41
+  - first:
+      213: 7342931290044478011
+    second: ParkEntrance_42
+  - first:
+      213: 5540694182747611318
+    second: ParkEntrance_43
+  - first:
+      213: 6750524599438566586
+    second: ParkEntrance_44
+  - first:
+      213: -7263568405192219808
+    second: ParkEntrance_45
+  - first:
+      213: -6266334108700551913
+    second: ParkEntrance_46
+  - first:
+      213: -8272881363690028278
+    second: ParkEntrance_47
+  - first:
+      213: 7595586037676767919
+    second: ParkEntrance_48
+  - first:
+      213: 5541285533702090450
+    second: ParkEntrance_49
+  - first:
+      213: -2887252451256608805
+    second: ParkEntrance_50
+  - first:
+      213: -7029973711419367419
+    second: ParkEntrance_51
+  - first:
+      213: 147091886288915102
+    second: ParkEntrance_52
+  - first:
+      213: 8225652212243606739
+    second: ParkEntrance_53
+  - first:
+      213: 1161547879119562627
+    second: ParkEntrance_54
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ParkEntrance_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 693
+        width: 1752
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 931bec40f8429d0d0800000000000000
+      internalID: -3397644247194750663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 616
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c905afd357d7a600800000000000000
+      internalID: 479588640572639687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_2
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 616
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d82160fce69bd7180800000000000000
+      internalID: -9115926185157193075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_3
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 616
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34ca885bbfc547870800000000000000
+      internalID: 8679664618001968195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_4
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 616
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb7b87011f6769c20800000000000000
+      internalID: 3212886161910970300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_5
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 616
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab8d9daa21bb69140800000000000000
+      internalID: 4726170547822123194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_6
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 616
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 194706ba99ca262e0800000000000000
+      internalID: -2133953497414994799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_7
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 539
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 301e8b671df27a3d0800000000000000
+      internalID: -3195532833909579517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_8
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 539
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eecc95bbe50bdf40800000000000000
+      internalID: 5754199458818346720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_9
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 539
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c73b2a5ae83fa73a0800000000000000
+      internalID: -6666748504378788996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_10
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 539
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e54e954a289e03f20800000000000000
+      internalID: 3400474465977099358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_11
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 539
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 816ae8c5f3dcf2750800000000000000
+      internalID: 6282465677224617496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_12
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 539
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e760eaa60133917f0800000000000000
+      internalID: -641425326321301890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_13
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 462
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8840e3620754f64e0800000000000000
+      internalID: -1986292562666847096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_14
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 462
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91ce8090058b1f440800000000000000
+      internalID: 4967954517854841881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_15
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 462
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32204cafe822b4c70800000000000000
+      internalID: 8956290281444213283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_16
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 462
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1c36d6b42cd49910800000000000000
+      internalID: 1843340197745802269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_17
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 462
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b10f57b5d2a403f0800000000000000
+      internalID: -935443783798029903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_18
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 462
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f9d202ecfc9b680800000000000000
+      internalID: -8738725117725663437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_19
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 385
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eef4e13a706ad4a40800000000000000
+      internalID: 5354118083745042414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_20
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 385
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a1cbdef2e9177030800000000000000
+      internalID: 3492288498778227105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_21
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 385
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce5b45a1d5b6c7dc0800000000000000
+      internalID: -3639916351204313620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_22
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 385
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed96bb8647fb19130800000000000000
+      internalID: 3571846486175738334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_23
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 385
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 230032eef3513b6f0800000000000000
+      internalID: -670168555225677774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_24
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 385
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d044e163fd03905a0800000000000000
+      internalID: -6554654047417252851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_25
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 308
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac24aea9502497990800000000000000
+      internalID: -7387801121883274550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_26
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 308
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d3398e4e6828dd70800000000000000
+      internalID: 9068042303939621849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_27
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 308
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d49cab319da5b54e0800000000000000
+      internalID: -1991898521795901107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_28
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 308
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39987261590c3f920800000000000000
+      internalID: 3022971521450084755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_29
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 308
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86f04a4614bc27050800000000000000
+      internalID: 5796919152101035880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_30
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 308
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82e4592e579b57920800000000000000
+      internalID: 2987497843793940008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_31
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 231
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 568ffc9e4fd6eff20800000000000000
+      internalID: 3458322462529288293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_32
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 231
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea682b07301adc5b0800000000000000
+      internalID: -5346440146471188818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_33
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 231
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fa15ddd87a7ca090800000000000000
+      internalID: -8021902176717301003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_34
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 231
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fafcb3b86393046b0800000000000000
+      internalID: -5314184653870215249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_35
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 231
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1fb9f13a45009b0800000000000000
+      internalID: -5115996117106167354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_36
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 231
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee3e577212ea62e60800000000000000
+      internalID: 7937222850706269166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_37
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 153
+        width: 69
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c9f7e63819c4ecb0800000000000000
+      internalID: -4835518994051499583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_38
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 153
+        width: 135
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5588fa6e83cf19f50800000000000000
+      internalID: 6886562626544830549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_39
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 153
+        width: 135
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 283b4d76982f0fe70800000000000000
+      internalID: 9147077515155911554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_40
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 153
+        width: 69
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcf3f561e864b7450800000000000000
+      internalID: 6087536897395998667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_41
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 153
+        width: 135
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8cbb3bd3856f22f0800000000000000
+      internalID: -995465375632343925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_42
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 153
+        width: 135
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b32b3319a1557e560800000000000000
+      internalID: 7342931290044478011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_43
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 76
+        width: 135
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b0aebbd00084ec40800000000000000
+      internalID: 5540694182747611318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_44
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 76
+        width: 135
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab4621d7b5eaead50800000000000000
+      internalID: 6750524599438566586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_45
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 76
+        width: 69
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06364cef40f923b90800000000000000
+      internalID: -7263568405192219808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_46
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 76
+        width: 135
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7155dfe14528909a0800000000000000
+      internalID: -6266334108700551913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_47
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 76
+        width: 135
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a038e483b32d03d80800000000000000
+      internalID: -8272881363690028278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_48
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 76
+        width: 69
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faaf3a41241f86960800000000000000
+      internalID: 7595586037676767919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_49
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 0
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dee25b75d996ec40800000000000000
+      internalID: 5541285533702090450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_50
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 0
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd759f1613b6ee7d0800000000000000
+      internalID: -2887252451256608805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_51
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 0
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 500a386e724807e90800000000000000
+      internalID: -7029973711419367419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_52
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 0
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9ac79f8a439a0200800000000000000
+      internalID: 147091886288915102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_53
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 0
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dcafac0b13672270800000000000000
+      internalID: 8225652212243606739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ParkEntrance_54
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 135
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 387a78454a5ae1010800000000000000
+      internalID: 1161547879119562627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ParkEntrance_0: -3397644247194750663
+      ParkEntrance_1: 479588640572639687
+      ParkEntrance_10: 3400474465977099358
+      ParkEntrance_11: 6282465677224617496
+      ParkEntrance_12: -641425326321301890
+      ParkEntrance_13: -1986292562666847096
+      ParkEntrance_14: 4967954517854841881
+      ParkEntrance_15: 8956290281444213283
+      ParkEntrance_16: 1843340197745802269
+      ParkEntrance_17: -935443783798029903
+      ParkEntrance_18: -8738725117725663437
+      ParkEntrance_19: 5354118083745042414
+      ParkEntrance_2: -9115926185157193075
+      ParkEntrance_20: 3492288498778227105
+      ParkEntrance_21: -3639916351204313620
+      ParkEntrance_22: 3571846486175738334
+      ParkEntrance_23: -670168555225677774
+      ParkEntrance_24: -6554654047417252851
+      ParkEntrance_25: -7387801121883274550
+      ParkEntrance_26: 9068042303939621849
+      ParkEntrance_27: -1991898521795901107
+      ParkEntrance_28: 3022971521450084755
+      ParkEntrance_29: 5796919152101035880
+      ParkEntrance_3: 8679664618001968195
+      ParkEntrance_30: 2987497843793940008
+      ParkEntrance_31: 3458322462529288293
+      ParkEntrance_32: -5346440146471188818
+      ParkEntrance_33: -8021902176717301003
+      ParkEntrance_34: -5314184653870215249
+      ParkEntrance_35: -5115996117106167354
+      ParkEntrance_36: 7937222850706269166
+      ParkEntrance_37: -4835518994051499583
+      ParkEntrance_38: 6886562626544830549
+      ParkEntrance_39: 9147077515155911554
+      ParkEntrance_4: 3212886161910970300
+      ParkEntrance_40: 6087536897395998667
+      ParkEntrance_41: -995465375632343925
+      ParkEntrance_42: 7342931290044478011
+      ParkEntrance_43: 5540694182747611318
+      ParkEntrance_44: 6750524599438566586
+      ParkEntrance_45: -7263568405192219808
+      ParkEntrance_46: -6266334108700551913
+      ParkEntrance_47: -8272881363690028278
+      ParkEntrance_48: 7595586037676767919
+      ParkEntrance_49: 5541285533702090450
+      ParkEntrance_5: 4726170547822123194
+      ParkEntrance_50: -2887252451256608805
+      ParkEntrance_51: -7029973711419367419
+      ParkEntrance_52: 147091886288915102
+      ParkEntrance_53: 8225652212243606739
+      ParkEntrance_54: 1161547879119562627
+      ParkEntrance_6: -2133953497414994799
+      ParkEntrance_7: -3195532833909579517
+      ParkEntrance_8: 5754199458818346720
+      ParkEntrance_9: -6666748504378788996
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
