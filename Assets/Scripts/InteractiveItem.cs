@@ -131,6 +131,7 @@ public class InteractiveItem : MonoBehaviour
             // Dog pet animation
             GetComponent<Animator>().SetTrigger("bark");
             GetComponent<AudioSource>().Play();
+            playerAnimator.SetTrigger("pet");
         }
         else if (name == "FlowerGarden")
         {
