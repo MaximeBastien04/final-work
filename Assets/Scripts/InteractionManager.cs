@@ -42,18 +42,18 @@ public class InteractionManager : MonoBehaviour
 
     void Update()
     {
-        if (currentTarget != null && Input.GetKeyDown(KeyCode.E))
-        {
-            // buttonAnimator.SetTrigger("press");
-            currentTarget.GetComponent<InteractiveItem>()?.TriggerInteraction();
-        }
+        // if (currentTarget != null && Input.GetKeyDown(KeyCode.E))
+        // {
+        //     // buttonAnimator.SetTrigger("press");
+        //     currentTarget.GetComponent<InteractiveItem>()?.TriggerInteraction();
+        // }
 
         if (currentTarget != null)
         {
             SpriteRenderer currentTargetSprite = currentTarget.GetComponent<SpriteRenderer>();
             Vector3 currentTargetPos = currentTarget.transform.position;
 
-            if (currentTarget.name == "AppartmentDoor" || currentTarget.name == "WorkDoorOutside" )
+            if (currentTarget.name == "AppartmentDoor" || currentTarget.name == "WorkDoorOutside")
             {
                 interactionButton.transform.position = new Vector3(currentTargetSprite.bounds.min.x - 0.5f, currentTargetPos.y + 1f, currentTargetPos.z);
             }
@@ -69,6 +69,14 @@ public class InteractionManager : MonoBehaviour
             {
                 interactionButton.transform.position = new Vector3(currentTargetPos.x, currentTargetSprite.bounds.max.y + 1, currentTargetPos.z);
             }
+        }
+    }
+
+    public void Interact()
+    {
+        if (currentTarget != null)
+        {
+            currentTarget.GetComponent<InteractiveItem>()?.TriggerInteraction();
         }
     }
 
