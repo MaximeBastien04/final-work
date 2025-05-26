@@ -2617,7 +2617,7 @@ GameObject:
   - component: {fileID: 245415182}
   - component: {fileID: 245415183}
   m_Layer: 0
-  m_Name: Grandma
+  m_Name: OldLady
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2641,6 +2641,7 @@ MonoBehaviour:
   bgcManager: {fileID: 0}
   audioManager: {fileID: 0}
   iceCream: {fileID: 0}
+  coffee: {fileID: 0}
 --- !u!212 &245415180
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2708,7 +2709,8 @@ Transform:
   m_LocalPosition: {x: -11.054538, y: 0.6500001, z: 0}
   m_LocalScale: {x: 0.34593, y: 0.34593, z: 0.34593}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1833308909}
   m_Father: {fileID: 1562306475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &245415182
@@ -2745,7 +2747,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -3.2983632, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2755,7 +2757,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.7654195, y: 8.92}
+  m_Size: {x: 12.362142, y: 8.92}
   m_EdgeRadius: 0
 --- !u!114 &245415183
 MonoBehaviour:
@@ -2771,10 +2773,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 983562117}
   dialogue:
-  - Oooh thank you for talking to me young man.
-  - It can be quite lonely at this old age.
-  - But you have to enjoy the little things in life.
-  - Take a look around and enjoy our beautiful city!
+  - text: Oh... what a nice surprise. Not many people stop to sit with an old lady
+      these days.
+    pauseAfter: 3
+  - text: "You know, when you get to my age\u2026 time moves differently."
+    pauseAfter: 0
+  - text: "People rush. They pass by. But I like to sit here and just\u2026 be."
+    pauseAfter: 4
+  - text: Do you hear the birds? The wind in the trees?
+    pauseAfter: 0
+  - text: "Some days, that\u2019s all I need. Just a moment where I\u2019m not alone
+      with my thoughts."
+    pauseAfter: 6
+  - text: You seem... tired.
+    pauseAfter: 0
+  - text: "Not your body \u2014 your heart."
+    pauseAfter: 0
+  - text: "Loneliness is a strange thing. It's not always loud. Sometimes it\u2019s
+      just\u2026 quiet, and heavy."
+    pauseAfter: 6
+  - text: But you know what helped me?
+    pauseAfter: 0
+  - text: Not grand adventures. Not big plans.
+    pauseAfter: 0
+  - text: Just noticing the little things.
+    pauseAfter: 0
+  - text: A warm cup of tea. The smell after rain. A smile from a stranger.
+    pauseAfter: 0
+  - text: Little things that remind me I'm still here. Still me.
+    pauseAfter: 4
+  - text: So go on, young one.
+    pauseAfter: 0
+  - text: Look around.
+    pauseAfter: 0
+  - text: Listen. Feel.
+    pauseAfter: 0
+  - text: Be.
+    pauseAfter: 5
+  - text: And come sit with me again sometime. The bench is always here.
+    pauseAfter: 0
   wordSpeed: 0.06
 --- !u!1 &254558624
 GameObject:
@@ -3519,6 +3556,7 @@ MonoBehaviour:
   bgcManager: {fileID: 0}
   audioManager: {fileID: 0}
   iceCream: {fileID: 0}
+  coffee: {fileID: 0}
 --- !u!212 &330866921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3661,6 +3699,160 @@ Transform:
   m_Children:
   - {fileID: 1119386346}
   m_Father: {fileID: 1562306475}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &333298921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 333298925}
+  - component: {fileID: 333298924}
+  - component: {fileID: 333298923}
+  - component: {fileID: 333298922}
+  m_Layer: 0
+  m_Name: ParkEntrance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &333298922
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333298921}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 17.52, y: 10.26}
+    newSize: {x: 17.52, y: 10.26}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 16.091835, y: 10.26}
+  m_EdgeRadius: 0
+--- !u!114 &333298923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333298921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d7284dc470de6499d5c0357a9d6f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  storyManager: {fileID: 0}
+  bgcManager: {fileID: 0}
+  audioManager: {fileID: 0}
+  iceCream: {fileID: 0}
+  coffee: {fileID: 0}
+--- !u!212 &333298924
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333298921}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 934c20d3e532b4f4f96f8524c8b5799a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 17.52, y: 10.26}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &333298925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333298921}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.82, y: -0.12, z: 0}
+  m_LocalScale: {x: 0.45199, y: 0.45199, z: 0.45199}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &338142277
 GameObject:
@@ -6298,9 +6490,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 983562117}
   dialogue:
-  - Here have some ice cream!
-  - It will cheer you up!
-  - Here you go.
+  - text: Hi there.
+    pauseAfter: 0
+  - text: Take some ice cream.
+    pauseAfter: 0
+  - text: It will cheer you up!
+    pauseAfter: 0
+  - text: Here you go.
+    pauseAfter: 0
   wordSpeed: 0.05
 --- !u!114 &559191046
 MonoBehaviour:
@@ -6320,6 +6517,7 @@ MonoBehaviour:
   bgcManager: {fileID: 0}
   audioManager: {fileID: 0}
   iceCream: {fileID: 0}
+  coffee: {fileID: 0}
 --- !u!114 &559191047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7380,6 +7578,7 @@ MonoBehaviour:
   bgcManager: {fileID: 0}
   audioManager: {fileID: 0}
   iceCream: {fileID: 0}
+  coffee: {fileID: 0}
 --- !u!61 &713305140
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7495,7 +7694,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 983562117}
   dialogue:
-  - Those are some lovely flowers.
+  - text: Those are some nice flowers.
+    pauseAfter: 0
   wordSpeed: 0.045
 --- !u!1 &713508081
 GameObject:
@@ -9925,7 +10125,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 22.6}
-  m_SizeDelta: {x: 800, y: 474}
+  m_SizeDelta: {x: 800, y: 376.14}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &983562119
 MonoBehaviour:
@@ -11667,6 +11867,7 @@ MonoBehaviour:
   bgcManager: {fileID: 0}
   audioManager: {fileID: 0}
   iceCream: {fileID: 0}
+  coffee: {fileID: 0}
 --- !u!61 &1150122126
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12931,8 +13132,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 92
-  m_fontSizeBase: 92
+  m_fontSize: 82
+  m_fontSizeBase: 82
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15650,7 +15851,7 @@ Transform:
   m_GameObject: {fileID: 1481681104}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34.500725, y: 0.69000006, z: 0}
+  m_LocalPosition: {x: 29.28, y: 0.69000006, z: 0}
   m_LocalScale: {x: 0.42758727, y: 0.42758727, z: 0.42758727}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15670,9 +15871,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 983562117}
   dialogue:
-  - You look stressed.
-  - Do some yoga with me.
-  - You'll feel better after it.
+  - text: 
+    pauseAfter: 0
+  - text: 
+    pauseAfter: 0
+  - text: 
+    pauseAfter: 0
   wordSpeed: 0.06
 --- !u!114 &1481681107
 MonoBehaviour:
@@ -15692,6 +15896,7 @@ MonoBehaviour:
   bgcManager: {fileID: 0}
   audioManager: {fileID: 0}
   iceCream: {fileID: 0}
+  coffee: {fileID: 0}
 --- !u!212 &1481681108
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15891,6 +16096,7 @@ MonoBehaviour:
   bgcManager: {fileID: 0}
   audioManager: {fileID: 0}
   iceCream: {fileID: 0}
+  coffee: {fileID: 0}
 --- !u!212 &1493274290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16827,6 +17033,7 @@ MonoBehaviour:
   bgcManager: {fileID: 0}
   audioManager: {fileID: 0}
   iceCream: {fileID: 627513669}
+  coffee: {fileID: 0}
 --- !u!114 &1568710274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16970,8 +17177,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 983562117}
   dialogue:
-  - Waaaaaah!!!
-  - My ice cream fell on the floor!
+  - text: Waaaahh!!!
+    pauseAfter: 0
+  - text: My ice cream fell on the floor!
+    pauseAfter: 0
   wordSpeed: 0.03
 --- !u!61 &1568710279
 BoxCollider2D:
@@ -19341,6 +19550,93 @@ Transform:
   - {fileID: 434408618}
   m_Father: {fileID: 197923904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1833308908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833308909}
+  - component: {fileID: 1833308910}
+  m_Layer: 0
+  m_Name: ProtagonistSitting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1833308909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833308908}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.45, y: -0.39, z: 0}
+  m_LocalScale: {x: 0.8236834, y: 0.8236834, z: 0.8236834}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 245415181}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1833308910
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833308908}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: bf37592691bc5fc4f8dab1b602a64515, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.95, y: 8.92}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1849224356
 GameObject:
   m_ObjectHideFlags: 0
@@ -21706,3 +22002,4 @@ SceneRoots:
   - {fileID: 769368282}
   - {fileID: 1564668903}
   - {fileID: 1863411635}
+  - {fileID: 333298925}

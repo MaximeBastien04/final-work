@@ -3235,34 +3235,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1149727066}
   dialogue:
-  - Hey there.
-  - You... seem lonely.
-  - ...
-  - Drifting.
-  - Wandering.
-  - Caught in a loop that makes no sound.
-  - "But you weren\u2019t always like this."
-  - There was warmth once.
-  - A voice. A hand. A laugh.
-  - "This world you see is not quite real... but neither is the one you\u2019ve been
-    hiding in."
-  - If you stay still, nothing changes.
-  - But if you step outside...
-  - ...
-  - Maybe someone will notice you.
-  - "Maybe you\u2019ll notice them too."
-  - Loneliness is loud in silence.
-  - But connection?
-  - It only needs a whisper.
-  - Go.
-  - Find someone.
-  - Talk.
-  - Listen.
-  - Be seen.
-  - ...
-  - You might not fix everything.
-  - "But you\u2019ll feel something again."
-  - "...That\u2019s where it begins."
+  - text: You... seem lonely.
+    pauseAfter: 2
+  - text: Drifting. Wandering. Caught in a loop that makes no sound.
+    pauseAfter: 0
+  - text: "But you weren\u2019t always like this."
+    pauseAfter: 0
+  - text: There was warmth once.
+    pauseAfter: 0
+  - text: A voice.
+    pauseAfter: 0
+  - text: ' A hand. '
+    pauseAfter: 0
+  - text: A laugh.
+    pauseAfter: 4
+  - text: This world you see is not quite real...
+    pauseAfter: 0
+  - text: "but neither is the one you\u2019ve been hiding in."
+    pauseAfter: 0
+  - text: If you stay still, nothing changes.
+    pauseAfter: 0
+  - text: But if you step outside...
+    pauseAfter: 2
+  - text: Maybe someone will notice you.
+    pauseAfter: 0
+  - text: "Maybe you\u2019ll notice them too."
+    pauseAfter: 4
+  - text: Loneliness is loud in silence.
+    pauseAfter: 0
+  - text: But connection?
+    pauseAfter: 0
+  - text: It only needs a whisper.
+    pauseAfter: 0
+  - text: Go.
+    pauseAfter: 0
+  - text: Find someone.
+    pauseAfter: 0
+  - text: Talk.
+    pauseAfter: 0
+  - text: Listen.
+    pauseAfter: 0
+  - text: Be seen.
+    pauseAfter: 5
+  - text: You might not fix everything.
+    pauseAfter: 0
+  - text: "But you\u2019ll feel something again."
+    pauseAfter: 2
+  - text: "...That\u2019s where it begins."
+    pauseAfter: 0
   wordSpeed: 0.06
 --- !u!1 &1343487425
 GameObject:

@@ -1,6 +1,8 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InteractiveItem : MonoBehaviour
 {
@@ -17,11 +19,11 @@ public class InteractiveItem : MonoBehaviour
     private AudioSource discoverySFX;
     private static bool hasWorked = false;
 
-    [Header("Ice Cream Child Quest")]
+    [Header("Specific items")]
     private bool playerHasIceCream = false;
     [SerializeField] private GameObject iceCream;
-
-
+    [SerializeField] private GameObject coffee;
+    private bool hasStartedOldLadyDialogue = false;
 
     void Start()
     {
@@ -70,7 +72,6 @@ public class InteractiveItem : MonoBehaviour
         }
         else if (name == "AppartmentDoor")
         {
-            // only make this available if tutorial is done
             SceneTransitionManager.Instance.lastExitDoor = name;
             SceneManager.LoadScene("Outside");
             audioManager.PlayClip(audioManager.doorOpen);
@@ -90,9 +91,8 @@ public class InteractiveItem : MonoBehaviour
         else if (name == "WorkDoor")
         {
             SceneTransitionManager.Instance.lastExitDoor = name;
-            SceneManager.LoadScene("Outside"); // at position of door
+            SceneManager.LoadScene("Outside");
             audioManager.PlayClip(audioManager.doorOpen);
-            // player.transform.position = new Vector3(0,)
         }
         else if (name == "WorkChair")
         {
@@ -110,13 +110,34 @@ public class InteractiveItem : MonoBehaviour
             Printer printer = GetComponent<Printer>();
             printer.PrintPaper();
         }
-        else if (name == "Grandma")
+        else if (name == "OldLady")
         {
             DialogueManager dialogueManager = GetComponent<DialogueManager>();
+            GameObject playerSit = transform.Find("ProtagonistSitting").gameObject;
+            CameraFollow mainCamera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
 
-            dialogueManager.Talk();
+            player.GetComponent<PlayerScript>().DisableMovement();
+            player.GetComponent<SpriteRenderer>().enabled = false;
+            playerSit.SetActive(true);
+            mainCamera.target = playerSit.transform;
+
+            // Sets a delay before the old lady starts talking
+            if (!hasStartedOldLadyDialogue)
+            {
+                hasStartedOldLadyDialogue = true;
+                StartCoroutine(StartOldLadyDialogueWithDelay(dialogueManager));
+            }
+            else
+            {
+                dialogueManager.Talk();
+            }
+
             dialogueManager.OnFinalLineStarted += () =>
             {
+                player.GetComponent<SpriteRenderer>().enabled = true;
+                playerSit.SetActive(false);
+                player.GetComponent<PlayerScript>().EnableMovement();
+                mainCamera.target = player.transform;
 
                 gameObject.tag = "HappinessIncrease";
                 if (interactionAmount == 0)
@@ -161,7 +182,12 @@ public class InteractiveItem : MonoBehaviour
 
             if (GetIceCream.iceCreamGiven)
             {
-                string[] newDialogue = { "You got ice cream for me?", "Thanks!" };
+                DialogueManager.DialogueLine[] newDialogue = new DialogueManager.DialogueLine[]
+                {
+                    new DialogueManager.DialogueLine { text = "You got ice cream for me?", pauseAfter = 1f },
+                    new DialogueManager.DialogueLine { text = "Thanks!", pauseAfter = 0f }
+                };
+
                 dialogueManager.ReplaceText(newDialogue);
 
                 dialogueManager.OnFinalLineStarted += () =>
@@ -187,6 +213,17 @@ public class InteractiveItem : MonoBehaviour
 
             dialogueManager.Talk();
         }
+        else if (name == "CoffeeMachine")
+        {
+            player.GetComponent<PlayerScript>().DisableMovement();
+            Transform handTransform = player.transform.Find("lowerTorso").Find("midTorso").Find("upperTorso").Find("upperRightArm").Find("lowerRightArm").Find("rightHand");
+
+            coffee.transform.SetParent(handTransform);
+            coffee.transform.localPosition = new Vector3(0.3f, -0.35f, 0);
+            coffee.transform.localRotation = new Quaternion(0, 0, 180, 0);
+
+            playerAnimator.SetTrigger("drinking");
+        }
 
 
         if (gameObject.tag == "HappinessIncrease")
@@ -205,4 +242,11 @@ public class InteractiveItem : MonoBehaviour
             hasBeenInteracted = true;
         }
     }
+
+    private IEnumerator StartOldLadyDialogueWithDelay(DialogueManager dialogueManager)
+    {
+        yield return new WaitForSeconds(6f);
+        dialogueManager.Talk();
+    }
+
 }
