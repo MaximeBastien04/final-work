@@ -8,6 +8,8 @@ public class InteractionManager : MonoBehaviour
 {
     public static InteractionManager Instance;
 
+    private InteractiveItem currentInteractiveItem;
+
     public GameObject buttonPrefab;
     private GameObject interactionButton;
     private SpriteRenderer buttonSpriteRenderer;
@@ -42,12 +44,6 @@ public class InteractionManager : MonoBehaviour
 
     void Update()
     {
-        // if (currentTarget != null && Input.GetKeyDown(KeyCode.E))
-        // {
-        //     // buttonAnimator.SetTrigger("press");
-        //     currentTarget.GetComponent<InteractiveItem>()?.TriggerInteraction();
-        // }
-
         if (currentTarget != null)
         {
             SpriteRenderer currentTargetSprite = currentTarget.GetComponent<SpriteRenderer>();
@@ -74,9 +70,9 @@ public class InteractionManager : MonoBehaviour
 
     public void Interact()
     {
-        if (currentTarget != null)
+        if (currentInteractiveItem != null)
         {
-            currentTarget.GetComponent<InteractiveItem>()?.TriggerInteraction();
+            currentInteractiveItem.TriggerInteraction();
         }
     }
 
@@ -85,6 +81,8 @@ public class InteractionManager : MonoBehaviour
         currentTarget = target;
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         fadeCoroutine = StartCoroutine(FadeSprite(0f, 1f, 0f, 3f, 0.3f));
+
+        currentInteractiveItem = target.GetComponent<InteractiveItem>();
     }
 
     public void HideButton()
@@ -92,6 +90,8 @@ public class InteractionManager : MonoBehaviour
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         fadeCoroutine = StartCoroutine(FadeSprite(1f, 0f, 3f, 0f, 0.3f));
         currentTarget = null;
+
+        currentInteractiveItem = null;
     }
 
     private IEnumerator FadeSprite(float startAlpha, float endAlpha, float startIntensity, float endIntensity, float duration)
@@ -110,11 +110,5 @@ public class InteractionManager : MonoBehaviour
 
         color.a = endAlpha;
         buttonSpriteRenderer.color = color;
-    }
-
-    public void IncreaseCounter()
-    {
-        interactionCounter++;
-        Debug.Log("Interaction amount: " + interactionCounter);
     }
 }

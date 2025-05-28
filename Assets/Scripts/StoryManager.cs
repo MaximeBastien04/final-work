@@ -4,8 +4,16 @@ using UnityEngine.SceneManagement;
 public class StoryManager : MonoBehaviour
 {
     public static StoryManager Instance;
-    private BackgroundColorManager bgcManager;
-    private WorkMinigame workMinigame;
+    public bool hasInteractedWithOldLady = false;
+    public bool hasInteractedWithMeditationLady = false;
+    public bool hasDrunkCoffee = false;
+    public bool hasDrunkWater = false;
+    public bool hasGivenChildIceCream = false;
+    public bool hasGottenIceCream = false;
+    public bool hasWorked = false;
+    public bool hasPetDog = false;
+    public bool hasLookedAtFlowers = false;
+
 
     private void Awake()
     {
@@ -23,7 +31,7 @@ public class StoryManager : MonoBehaviour
 
     void Start()
     {
-        bgcManager = GameObject.Find("BackgroundColor").GetComponent<BackgroundColorManager>();
+        
     }
 
 }

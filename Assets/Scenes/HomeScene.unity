@@ -3235,7 +3235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 1149727066}
   dialogue:
-  - text: You... seem lonely.
+  - text: You seem... lonely.
     pauseAfter: 2
   - text: Drifting. Wandering. Caught in a loop that makes no sound.
     pauseAfter: 0

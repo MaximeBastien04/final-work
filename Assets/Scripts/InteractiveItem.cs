@@ -24,11 +24,13 @@ public class InteractiveItem : MonoBehaviour
     [SerializeField] private GameObject iceCream;
     [SerializeField] private GameObject coffee;
     private bool hasStartedOldLadyDialogue = false;
+    private bool hasAnsweredMeditationQuestion = false;
+
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        // storyManager = GameObject.Find("StoryManager").GetComponent<StoryManager>();
+        storyManager = StoryManager.Instance;
         bgcManager = GameObject.Find("BackgroundColor").GetComponent<BackgroundColorManager>();
         postProManager = GameObject.Find("Global Volume").GetComponent<PostProcessingManager>();
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
@@ -57,12 +59,180 @@ public class InteractiveItem : MonoBehaviour
         playerAnimator = player.GetComponent<Animator>();
         interactionManager = GameObject.Find("InteractionManager").GetComponent<InteractionManager>();
 
-        if (name == "Glass")
+        if (name == "OldLady")
+        {
+            DialogueManager dialogueManager = GetComponent<DialogueManager>();
+            GameObject playerSit = transform.Find("ProtagonistSitting").gameObject;
+            CameraFollow mainCamera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+
+            player.GetComponent<PlayerScript>().DisableMovement();
+            player.GetComponent<SpriteRenderer>().enabled = false;
+            playerSit.SetActive(true);
+            mainCamera.target = playerSit.transform;
+
+            if (!hasStartedOldLadyDialogue)
+            {
+                hasStartedOldLadyDialogue = true;
+                StartCoroutine(StartOldLadyDialogueWithDelay(dialogueManager));
+            }
+            else
+            {
+                dialogueManager.Talk();
+            }
+
+            dialogueManager.OnFinalLineStarted += () =>
+            {
+                player.GetComponent<SpriteRenderer>().enabled = true;
+                playerSit.SetActive(false);
+                player.GetComponent<PlayerScript>().EnableMovement();
+                mainCamera.target = player.transform;
+
+                gameObject.tag = "HappinessIncrease";
+                if (interactionAmount == 0)
+                {
+                    hasBeenInteracted = false;
+                    interactionAmount++;
+                }
+            };
+        }
+        else if (name == "MeditationLady")
+        {
+            DialogueManager dialogueManager = GetComponent<DialogueManager>();
+            GameObject playerMeditate = transform.Find("MeditationProtagonist").gameObject;
+            CameraFollow mainCamera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
+            Animator eyesClosed = GameObject.Find("BlackSquare").GetComponent<Animator>();
+
+            dialogueManager.Talk();
+
+
+            if (!storyManager.hasInteractedWithMeditationLady)
+            {
+                dialogueManager.OnFinalLineStarted += () =>
+                {
+                    GetComponent<BoxCollider2D>().enabled = false;
+
+                    dialogueManager.ShowChoice(
+                            yesAction: () =>
+                            {
+                                GetComponent<BoxCollider2D>().enabled = true;
+                                dialogueManager.dialoguePanel.SetActive(false);
+                                dialogueManager.RemoveText();
+                                player.GetComponent<PlayerScript>().DisableMovement();
+                                player.GetComponent<SpriteRenderer>().enabled = false;
+                                playerMeditate.SetActive(true);
+                                mainCamera.target = playerMeditate.transform;
+
+                                eyesClosed.SetTrigger("fadeIn");
+
+
+                                DialogueManager.DialogueLine[] meditationDialogue = new DialogueManager.DialogueLine[]
+                                {
+                                new DialogueManager.DialogueLine { text = "Start by closing your eyes.", pauseAfter = 3f },
+                                new DialogueManager.DialogueLine { text = "Good.", pauseAfter = 0f },
+                                new DialogueManager.DialogueLine { text = "Now tell me.", pauseAfter = 0f },
+                                new DialogueManager.DialogueLine { text = "What do you hear?", pauseAfter = 0f }
+                                };
+
+                                dialogueManager.ReplaceText(meditationDialogue);
+                                dialogueManager.Talk();
+
+                                dialogueManager.OnFinalLineStarted = () =>
+                                {
+                                    DialogueManager.DialogueLine[] afterChoiceDialogue = new DialogueManager.DialogueLine[]
+                                    {
+                                    new DialogueManager.DialogueLine { text = "I see.", pauseAfter = 1f },
+                                    new DialogueManager.DialogueLine { text = "Whenever I feel overwhelmed, I stop for a moment.", pauseAfter = 0f },
+                                    new DialogueManager.DialogueLine { text = "I listen. I breathe.", pauseAfter = 0f },
+                                    new DialogueManager.DialogueLine { text = "I'm consious about my surroundings.", pauseAfter = 2f },
+                                    new DialogueManager.DialogueLine { text = "Just being present helps me feel calm again.", pauseAfter = 0f },
+                                    new DialogueManager.DialogueLine { text = "Tone the pressure down.", pauseAfter = 1.5f },
+                                    new DialogueManager.DialogueLine { text = "You're welcome to meditate here anytime.", pauseAfter = 0f }
+                                    };
+
+                                    if (!hasAnsweredMeditationQuestion)
+                                    {
+                                        hasAnsweredMeditationQuestion = true;
+
+                                        dialogueManager.ShowMultiChoice("What do you hear?",
+                                            new (string, System.Action)[]
+                                            {
+                                            ("Birds", () => {
+                                                GetComponent<BoxCollider2D>().enabled = true;
+                                                dialogueManager.ReplaceText(afterChoiceDialogue);
+                                                dialogueManager.Talk();
+                                                storyManager.hasInteractedWithMeditationLady = true;
+                                            }),
+                                            ("Dog", () => {
+                                                GetComponent<BoxCollider2D>().enabled = true;
+                                                dialogueManager.ReplaceText(afterChoiceDialogue);
+                                                dialogueManager.Talk();
+                                                storyManager.hasInteractedWithMeditationLady = true;
+                                            }),
+                                            ("Cars", () => {
+                                                GetComponent<BoxCollider2D>().enabled = true;
+                                                dialogueManager.ReplaceText(afterChoiceDialogue);
+                                                dialogueManager.Talk();
+                                                storyManager.hasInteractedWithMeditationLady = true;
+                                            })
+                                            });
+                                    }
+                                    else
+                                    {
+                                        dialogueManager.ReplaceText(afterChoiceDialogue);
+                                        dialogueManager.Talk();
+                                    }
+
+                                    dialogueManager.OnFinalLineStarted = () =>
+                                    {
+                                        GetComponent<BoxCollider2D>().enabled = true;
+                                        eyesClosed.SetTrigger("fadeOut");
+
+                                        player.GetComponent<SpriteRenderer>().enabled = true;
+                                        playerMeditate.SetActive(false);
+                                        player.GetComponent<PlayerScript>().EnableMovement();
+                                        mainCamera.target = player.transform;
+
+                                        gameObject.tag = "HappinessIncrease";
+                                        if (interactionAmount == 0)
+                                        {
+                                            hasBeenInteracted = false;
+                                            interactionAmount++;
+                                        }
+                                    };
+                                };
+                            },
+                            noAction: () =>
+                            {
+                                GetComponent<BoxCollider2D>().enabled = true;
+                                dialogueManager.dialoguePanel.SetActive(false);
+                                dialogueManager.choicePanel.SetActive(false);
+                                player.GetComponent<SpriteRenderer>().enabled = true;
+                                playerMeditate.SetActive(false);
+                                player.GetComponent<PlayerScript>().EnableMovement();
+                                mainCamera.target = player.transform;
+                            }
+                        );
+                };
+            }
+            else
+            {
+
+                DialogueManager.DialogueLine[] afterChoiceDialogue = new DialogueManager.DialogueLine[]
+                {
+                    new DialogueManager.DialogueLine { text = "You're welcome to meditate here anytime.", pauseAfter = 0f }
+                };
+                gameObject.tag = "HappinessIncrease";
+                if (interactionAmount == 0)
+                {
+                    hasBeenInteracted = false;
+                    interactionAmount++;
+                }
+            }
+        }
+        else if (name == "Glass")
         {
             GlassPickup glassPickup = GetComponent<GlassPickup>();
             glassPickup.PickUp();
-            interactionManager.IncreaseCounter();
-            // audioManager.PlayClip(audioManager.drinkGlass);
         }
         else if (name == "LightSwitch")
         {
@@ -110,43 +280,6 @@ public class InteractiveItem : MonoBehaviour
             Printer printer = GetComponent<Printer>();
             printer.PrintPaper();
         }
-        else if (name == "OldLady")
-        {
-            DialogueManager dialogueManager = GetComponent<DialogueManager>();
-            GameObject playerSit = transform.Find("ProtagonistSitting").gameObject;
-            CameraFollow mainCamera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
-
-            player.GetComponent<PlayerScript>().DisableMovement();
-            player.GetComponent<SpriteRenderer>().enabled = false;
-            playerSit.SetActive(true);
-            mainCamera.target = playerSit.transform;
-
-            // Sets a delay before the old lady starts talking
-            if (!hasStartedOldLadyDialogue)
-            {
-                hasStartedOldLadyDialogue = true;
-                StartCoroutine(StartOldLadyDialogueWithDelay(dialogueManager));
-            }
-            else
-            {
-                dialogueManager.Talk();
-            }
-
-            dialogueManager.OnFinalLineStarted += () =>
-            {
-                player.GetComponent<SpriteRenderer>().enabled = true;
-                playerSit.SetActive(false);
-                player.GetComponent<PlayerScript>().EnableMovement();
-                mainCamera.target = player.transform;
-
-                gameObject.tag = "HappinessIncrease";
-                if (interactionAmount == 0)
-                {
-                    hasBeenInteracted = false;
-                    interactionAmount++;
-                }
-            };
-        }
         else if (name == "Dog")
         {
             // Dog pet animation
@@ -184,7 +317,7 @@ public class InteractiveItem : MonoBehaviour
             {
                 DialogueManager.DialogueLine[] newDialogue = new DialogueManager.DialogueLine[]
                 {
-                    new DialogueManager.DialogueLine { text = "You got ice cream for me?", pauseAfter = 1f },
+                    new DialogueManager.DialogueLine { text = "You got ice cream for me?", pauseAfter = 0f },
                     new DialogueManager.DialogueLine { text = "Thanks!", pauseAfter = 0f }
                 };
 
@@ -224,6 +357,22 @@ public class InteractiveItem : MonoBehaviour
 
             playerAnimator.SetTrigger("drinking");
         }
+        else if (name == "Coworker")
+        {
+            DialogueManager dialogueManager = GetComponent<DialogueManager>();
+
+            dialogueManager.Talk();
+            dialogueManager.OnFinalLineStarted += () =>
+                {
+                    gameObject.tag = "HappinessIncrease";
+                    if (interactionAmount == 0)
+                    {
+                        hasBeenInteracted = false;
+                        interactionAmount++;
+                    }
+                };
+        }
+
 
 
         if (gameObject.tag == "HappinessIncrease")
@@ -243,10 +392,12 @@ public class InteractiveItem : MonoBehaviour
         }
     }
 
+
     private IEnumerator StartOldLadyDialogueWithDelay(DialogueManager dialogueManager)
     {
         yield return new WaitForSeconds(6f);
         dialogueManager.Talk();
     }
+
 
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class DialogueManager : MonoBehaviour
         public float pauseAfter;
     }
 
-    [SerializeField] private GameObject dialoguePanel;
+    public GameObject dialoguePanel;
     private TextMeshProUGUI dialogueText;
     public DialogueLine[] dialogue;
     private int index = 0;
@@ -27,10 +28,17 @@ public class DialogueManager : MonoBehaviour
     private bool isWaiting = false;
     PlayerControls controls;
 
+    [Header("Choice Panel")]
+    public GameObject choicePanel;
+    public Button yesButton;
+    public Button noButton;
+
+    private System.Action onYes;
+    private System.Action onNo;
+
     void Awake()
     {
         controls = new PlayerControls();
-        controls.Gameplay.Interact.performed += ctx => OnInteract();
     }
 
     void OnEnable()
@@ -54,6 +62,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "HomeScene")
         {
+            controls.Gameplay.Interact.performed += ctx => OnInteract();
             if (dialogueFinished)
             {
                 StartCoroutine(SceneTransitionManager.Instance.LoadSceneAfterDelay(5f, "Appartment"));
@@ -189,5 +198,76 @@ public class DialogueManager : MonoBehaviour
         dialogue = newText;
         dialogueFinished = false;
         index = 0;
+    }
+
+    public void ShowChoice(System.Action yesAction, System.Action noAction)
+    {
+        TextMeshProUGUI choiceText = choicePanel.transform.Find("ChoiceText").GetComponent<TextMeshProUGUI>();
+        if (index < dialogue.Length)
+        {
+            choiceText.text = dialogue[index].text;
+        }
+
+
+        onYes = yesAction;
+        onNo = noAction;
+
+        yesButton.onClick.RemoveAllListeners();
+        noButton.onClick.RemoveAllListeners();
+
+        yesButton.onClick.AddListener(() =>
+        {
+            choicePanel.SetActive(false);
+            onYes?.Invoke();
+        });
+
+        noButton.onClick.AddListener(() =>
+        {
+            choicePanel.SetActive(false);
+            onNo?.Invoke();
+        });
+
+        choicePanel.SetActive(true);
+    }
+
+    public void ShowMultiChoice(string question,
+    (string label, System.Action action)[] choices)
+    {
+        TextMeshProUGUI choiceText = choicePanel.transform.Find("ChoiceText").GetComponent<TextMeshProUGUI>();
+        choiceText.text = question;
+
+        Button[] allButtons = choicePanel.GetComponentsInChildren<Button>();
+        foreach (Button btn in allButtons)
+        {
+            btn.gameObject.SetActive(false);
+            btn.onClick.RemoveAllListeners();
+        }
+        for (int i = 0; i < choices.Length; i++)
+        {
+            string buttonName = $"{choices[i].label}Button";
+            Transform buttonTransform = choicePanel.transform.Find(buttonName);
+            if (buttonTransform != null)
+            {
+                Button btn = buttonTransform.GetComponent<Button>();
+                TextMeshProUGUI btnText = btn.GetComponentInChildren<TextMeshProUGUI>();
+                btnText.text = choices[i].label;
+
+                btn.gameObject.SetActive(true);
+
+                int choiceIndex = i;
+                btn.onClick.AddListener(() =>
+                {
+                    choicePanel.SetActive(false);
+                    choices[choiceIndex].action?.Invoke();
+                });
+            }
+            else
+            {
+                Debug.LogWarning($"Button {buttonName} not found in ChoicePanel.");
+            }
+        }
+
+
+        choicePanel.SetActive(true);
     }
 }
