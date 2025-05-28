@@ -4,8 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages dialogue display, typing effect, player interaction, and choice UI in the game.
+/// </summary>
 public class DialogueManager : MonoBehaviour
 {
+
+    /// <summary>
+    /// Struct representing a line of dialogue and how long to pause after it.
+    /// </summary>
     [System.Serializable]
     public struct DialogueLine
     {
@@ -41,15 +48,8 @@ public class DialogueManager : MonoBehaviour
         controls = new PlayerControls();
     }
 
-    void OnEnable()
-    {
-        controls.Gameplay.Enable();
-    }
-
-    void OnDisable()
-    {
-        controls.Gameplay.Disable();
-    }
+    void OnEnable() => controls.Gameplay.Enable();
+    void OnDisable() => controls.Gameplay.Disable();
 
     void Start()
     {
@@ -58,6 +58,9 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
     }
 
+    /// <summary>
+    /// Checks for interaction input and handles dialogue progression in the "HomeScene".
+    /// </summary>
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "HomeScene")
@@ -70,6 +73,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the player interacts; starts or advances dialogue.
+    /// </summary>
     private void OnInteract()
     {
         if (!isWaiting)
@@ -78,6 +84,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Starts or advances dialogue typing. Shows dialogue panel if not active.
+    /// </summary>
     public void Talk()
     {
         if (isWaiting) return;
@@ -99,6 +108,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops current typing coroutine, clears dialogue, hides panel, and resets state.
+    /// </summary>
     public void RemoveText()
     {
         if (typingCoroutine != null)
@@ -113,6 +125,10 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
     }
 
+    /// <summary>
+    /// Coroutine that types out the current dialogue line letter-by-letter with pauses.
+    /// Invokes OnFinalLineStarted event if the last line starts.
+    /// </summary>
     IEnumerator Typing()
     {
         dialogueText.text = "";
@@ -136,6 +152,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine that pauses for a duration, temporarily hides and shows dialogue panel, then advances dialogue.
+    /// </summary>
+    /// <param name="duration">Pause duration in seconds.</param>
     IEnumerator PauseThenNextLine(float duration)
     {
         isWaiting = true;
@@ -147,6 +167,9 @@ public class DialogueManager : MonoBehaviour
         NextLine();
     }
 
+    /// <summary>
+    /// Advances to the next dialogue line or ends dialogue if finished.
+    /// </summary>
     public void NextLine()
     {
         if (isWaiting) return;
@@ -160,7 +183,6 @@ public class DialogueManager : MonoBehaviour
             }
 
             typingCoroutine = StartCoroutine(Typing());
-
         }
         else
         {
@@ -168,6 +190,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Detects when the player enters the dialogue trigger area.
+    /// </summary>
+    /// <param name="other">The collider entering the trigger.</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -176,6 +202,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Detects when the player exits the dialogue trigger area and stops dialogue.
+    /// </summary>
+    /// <param name="other">The collider exiting the trigger.</param>
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -193,6 +223,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Replaces the current dialogue lines with new lines and resets dialogue state.
+    /// </summary>
+    /// <param name="newText">New array of dialogue lines.</param>
     public void ReplaceText(DialogueLine[] newText)
     {
         dialogue = newText;
@@ -200,6 +234,11 @@ public class DialogueManager : MonoBehaviour
         index = 0;
     }
 
+    /// <summary>
+    /// Displays a yes/no choice panel with provided callback actions.
+    /// </summary>
+    /// <param name="yesAction">Action to invoke when yes is chosen.</param>
+    /// <param name="noAction">Action to invoke when no is chosen.</param>
     public void ShowChoice(System.Action yesAction, System.Action noAction)
     {
         TextMeshProUGUI choiceText = choicePanel.transform.Find("ChoiceText").GetComponent<TextMeshProUGUI>();
@@ -207,7 +246,6 @@ public class DialogueManager : MonoBehaviour
         {
             choiceText.text = dialogue[index].text;
         }
-
 
         onYes = yesAction;
         onNo = noAction;
@@ -230,6 +268,11 @@ public class DialogueManager : MonoBehaviour
         choicePanel.SetActive(true);
     }
 
+    /// <summary>
+    /// Displays a multiple choice panel with a question and arbitrary number of choices.
+    /// </summary>
+    /// <param name="question">The question text to display.</param>
+    /// <param name="choices">Array of tuples containing label and action for each choice.</param>
     public void ShowMultiChoice(string question,
     (string label, System.Action action)[] choices)
     {
@@ -266,8 +309,6 @@ public class DialogueManager : MonoBehaviour
                 Debug.LogWarning($"Button {buttonName} not found in ChoicePanel.");
             }
         }
-
-
         choicePanel.SetActive(true);
     }
 }

@@ -2,6 +2,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Handles player spawn positioning based on the last door used and current scene.
+/// </summary>
 public class PlayerSpawnManager : MonoBehaviour
 {
     private GameObject player;
@@ -12,6 +15,9 @@ public class PlayerSpawnManager : MonoBehaviour
 
     private CameraFollow cameraFollow;
 
+    /// <summary>
+    /// Initializes the player spawn location based on the last exit door and current scene.
+    /// </summary>
     void Start()
     {
         cameraFollow = GameObject.Find("Main Camera").GetComponent<CameraFollow>();

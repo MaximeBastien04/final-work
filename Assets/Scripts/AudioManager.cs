@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages playing audio clips using a single AudioSource.
+/// Implements a singleton pattern to persist across scenes.
+/// </summary>
 public class AudioManager : MonoBehaviour
 {
     private AudioSource audioSource;
@@ -13,6 +17,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip alarmClock;
 
     private AudioManager Instance;
+
     void Awake()
     {
         if (Instance == null)
@@ -31,6 +36,10 @@ public class AudioManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    /// <summary>
+    /// Plays the given audio clip once on the AudioSource.
+    /// </summary>
+    /// <param name="clip">The AudioClip to be played.</param>
     public void PlayClip(AudioClip clip)
     {
         audioSource.clip = clip;

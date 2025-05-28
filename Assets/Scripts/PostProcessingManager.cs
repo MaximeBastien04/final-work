@@ -10,7 +10,7 @@ public class PostProcessingManager : MonoBehaviour
 
     public static PostProcessingManager Instance;
 
-    
+
     void Awake()
     {
         if (Instance == null)
@@ -24,13 +24,16 @@ public class PostProcessingManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Initializes the vignette reference from the Volume component on this GameObject.
+    /// </summary>
     void Start()
     {
         Volume volume = GetComponent<Volume>();
 
         if (volume.profile.TryGet(out vignette))
         {
-            // Vignette found
+            Debug.LogWarning("Vignette found.");
         }
         else
         {
@@ -38,6 +41,9 @@ public class PostProcessingManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Smoothly decreases the intensity of the vignette by a fixed amount over time.
+    /// </summary>
     public void DecreaseVignetteSmoothly()
     {
         if (vignette == null) return;
@@ -50,6 +56,13 @@ public class PostProcessingManager : MonoBehaviour
         vignetteRoutine = StartCoroutine(FadeVignetteTo(vignette.intensity.value - 0.03f, 1f));
     }
 
+
+    /// <summary>
+    /// Coroutine to gradually interpolate the vignette intensity toward a target value.
+    /// </summary>
+    /// <param name="target">The target vignette intensity value.</param>
+    /// <param name="duration">The duration over which to fade the intensity.</param>
+    /// <returns>IEnumerator used for coroutine execution.</returns>
     private IEnumerator FadeVignetteTo(float target, float duration)
     {
         float start = vignette.intensity.value;

@@ -20,7 +20,7 @@ public class InteractionManager : MonoBehaviour
     private GameObject currentTarget;
     public int interactionCounter = 0;
 
-
+    
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -42,6 +42,9 @@ public class InteractionManager : MonoBehaviour
         buttonGlow = interactionButton.GetComponent<Light2D>();
     }
 
+    /// <summary>
+    /// Updates the position of the interaction button based on the current target's position.
+    /// </summary>
     void Update()
     {
         if (currentTarget != null)
@@ -68,6 +71,9 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Triggers the interaction logic of the current interactive item.
+    /// </summary>
     public void Interact()
     {
         if (currentInteractiveItem != null)
@@ -76,6 +82,10 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays the interaction button near the specified target and starts its fade-in animation.
+    /// </summary>
+    /// <param name="target">The GameObject the player can interact with.</param>
     public void ShowButton(GameObject target)
     {
         currentTarget = target;
@@ -85,6 +95,9 @@ public class InteractionManager : MonoBehaviour
         currentInteractiveItem = target.GetComponent<InteractiveItem>();
     }
 
+    /// <summary>
+    /// Hides the interaction button and starts its fade-out animation.
+    /// </summary>
     public void HideButton()
     {
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
@@ -94,6 +107,15 @@ public class InteractionManager : MonoBehaviour
         currentInteractiveItem = null;
     }
 
+    /// <summary>
+    /// Coroutine that fades the interaction button's visibility and glow over time.
+    /// </summary>
+    /// <param name="startAlpha">The initial alpha (transparency) of the button sprite.</param>
+    /// <param name="endAlpha">The final alpha of the button sprite.</param>
+    /// <param name="startIntensity">The initial intensity of the button's light glow.</param>
+    /// <param name="endIntensity">The final intensity of the button's light glow.</param>
+    /// <param name="duration">The duration over which the fade occurs.</param>
+    /// <returns>IEnumerator used for coroutine execution.</returns>
     private IEnumerator FadeSprite(float startAlpha, float endAlpha, float startIntensity, float endIntensity, float duration)
     {
         float elapsed = 0f;

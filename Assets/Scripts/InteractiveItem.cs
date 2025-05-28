@@ -37,6 +37,10 @@ public class InteractiveItem : MonoBehaviour
         discoverySFX = GameObject.Find("DiscoverySFX").GetComponent<AudioSource>();
     }
 
+    /// <summary>
+    /// Shows the interaction button when the player enters the trigger zone.
+    /// </summary>
+    /// <param name="other">Collider of the object that entered the trigger zone.</param>
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -45,6 +49,10 @@ public class InteractiveItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Hides the interaction button when the player exits the trigger zone.
+    /// </summary>
+    /// <param name="other">Collider of the object that exited the trigger zone.</param>
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -53,6 +61,9 @@ public class InteractiveItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Triggers an interaction based on the name of the interactive object. Each object has a unique behavior.
+    /// </summary>
     public void TriggerInteraction()
     {
         string name = gameObject.name;
@@ -373,8 +384,6 @@ public class InteractiveItem : MonoBehaviour
                 };
         }
 
-
-
         if (gameObject.tag == "HappinessIncrease")
         {
             if (!hasBeenInteracted)
@@ -392,7 +401,11 @@ public class InteractiveItem : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Coroutine that starts the dialogue with the Old Lady after a delay.
+    /// </summary>
+    /// <param name="dialogueManager">The dialogue manager controlling the conversation.</param>
+    /// <returns>Waits for a few seconds before starting the dialogue.</returns>
     private IEnumerator StartOldLadyDialogueWithDelay(DialogueManager dialogueManager)
     {
         yield return new WaitForSeconds(6f);

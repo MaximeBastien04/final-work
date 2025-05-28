@@ -12,11 +12,9 @@ public class PlayerScript : MonoBehaviour
     Vector2 move;
     public bool interactionBlocked = false;
 
-
-    /**
-    * Initializes input controls and binds actions to their respective input events.
-    * Actions: Sets up input callbacks for movement and interaction.
-    */
+    /// <summary>
+    /// Initializes input controls and binds input callbacks.
+    /// </summary>
     void Awake()
     {
         controls = new PlayerControls();
@@ -27,9 +25,8 @@ public class PlayerScript : MonoBehaviour
     }
 
     void OnEnable() => controls.Gameplay.Enable();
-
     void OnDisable() => controls.Gameplay.Disable();
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -45,6 +42,9 @@ public class PlayerScript : MonoBehaviour
             animator.SetBool("isWalking", false);
     }
 
+    /// <summary>
+    /// Calls the interaction method from the InteractionManager if interactions are not blocked.
+    /// </summary>
     public void Interact()
     {
         if (!interactionBlocked)
@@ -53,6 +53,10 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Applies horizontal movement based on input and flips the sprite accordingly.
+    /// Also handles walking animation.
+    /// </summary>
     public void Move()
     {
 
@@ -83,6 +87,9 @@ public class PlayerScript : MonoBehaviour
     public void EnableMovement() => canMove = true;
     public void DisableMovement() => canMove = false;
 
+    /// <summary>
+    /// Calls the PutDown method on the GlassPickup component.
+    /// </summary>
     public void PutDown()
     {
         GameObject.Find("Glass").GetComponent<GlassPickup>().PutDown();

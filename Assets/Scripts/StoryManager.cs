@@ -14,10 +14,8 @@ public class StoryManager : MonoBehaviour
     public bool hasPetDog = false;
     public bool hasLookedAtFlowers = false;
 
-
     private void Awake()
     {
-        // Singleton setup
         if (Instance == null)
         {
             Instance = this;
@@ -28,10 +26,4 @@ public class StoryManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    void Start()
-    {
-        
-    }
-
 }

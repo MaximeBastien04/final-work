@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages the background color based on moods and smoothly follows the player.
+/// Implements singleton pattern for global access.
+/// </summary>
 public class BackgroundColorManager : MonoBehaviour
 {
     public static BackgroundColorManager Instance;
@@ -9,20 +13,14 @@ public class BackgroundColorManager : MonoBehaviour
     private Color targetColor;
     public float lerpSpeed = 2f;
 
-    // Follow Player
     public float followSpeed = 2f;
     public float yOffset = 1f;
     public Transform target;
 
-    private Dictionary<string, Color> moodColors = new Dictionary<string, Color>()
-    {
-        { "Happy", new Color(1f, 0.8f, 0.3f) },       // bright yellow-orange
-        { "Sad", new Color(0.2f, 0.3f, 0.6f) },        // desaturated blue
-        { "Anxious", new Color(0.5f, 0.4f, 0.6f) },    // muted purple
-        { "Neutral", new Color(0.6f, 0.6f, 0.6f) },    // gray
-        { "Hopeful", new Color(0.6f, 0.85f, 1f) }      // sky blue
-    };
-
+    /// <summary>
+    /// Initializes the singleton instance, ensures only one instance exists,
+    /// and sets the initial target color to the current background color.
+    /// </summary>
     void Awake()
     {
         if (Instance == null)
@@ -39,6 +37,9 @@ public class BackgroundColorManager : MonoBehaviour
         targetColor = spriteRenderer.color;
     }
 
+    /// <summary>
+    /// Lerps the background color towards the target color each frame and moves background to follow the player with an offset.
+    /// </summary>
     void Update()
     {
         spriteRenderer.color = Color.Lerp(spriteRenderer.color, targetColor, lerpSpeed * Time.deltaTime);
@@ -49,31 +50,30 @@ public class BackgroundColorManager : MonoBehaviour
             transform.position = new Vector3(target.position.x, target.position.y + yOffset, transform.position.z);
     }
 
-    /// Set background color using a Color
+    /// <summary>
+    /// Sets the target background color.
+    /// </summary>
+    /// <param name="newColor">The new target color to set as the background.</param>
     public void SetBackgroundColor(Color newColor)
     {
         targetColor = newColor;
     }
 
-    /// Set background color using RGB in 0-255 range
+    /// <summary>
+    /// Sets the target background color using RGB values in 0-255 range.
+    /// </summary>
+    /// <param name="r">Red component (0-255).</param>
+    /// <param name="g">Green component (0-255).</param>
+    /// <param name="b">Blue component (0-255).</param>
     public void SetBackgroundColor255(int r, int g, int b)
     {
         targetColor = new Color(r / 255f, g / 255f, b / 255f);
     }
 
-
-    public void SetMood(string mood)
-    {
-        if (moodColors.TryGetValue(mood, out Color color))
-        {
-            SetBackgroundColor(color);
-        }
-        else
-        {
-            Debug.LogWarning("Mood not found: " + mood);
-        }
-    }
-
+    /// <summary>
+    /// Updates the background color to a brighter shade if it is below certain RGB thresholds.
+    /// Logs a message when the color is sufficiently bright (indicating "happy" mood).
+    /// </summary>
     public void UpdateBackgroundColor()
     {
         Color currentColor = GetComponent<SpriteRenderer>().color;

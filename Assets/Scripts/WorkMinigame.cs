@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages the logic, visuals, and audio for the work minigame interaction.
+/// </summary>
 public class WorkMinigame : MonoBehaviour
 {
     [Header("Visual")]
@@ -20,6 +23,9 @@ public class WorkMinigame : MonoBehaviour
     private CameraFollow mainCamera;
     [SerializeField] private GameObject interactableItem;
 
+    /// <summary>
+    /// Initializes references and disables the minigame visuals on start.
+    /// </summary>
     void Start()
     {
         playerIsSitting = false;
@@ -37,6 +43,10 @@ public class WorkMinigame : MonoBehaviour
         MinigameLogic();
     }
 
+    /// <summary>
+    /// Handles the logic of the work minigame, including filling the progress bar,
+    /// playing audio, updating player state, and transitioning the visuals and camera.
+    /// </summary>
     public void MinigameLogic()
     {
         if (playerIsSitting)
