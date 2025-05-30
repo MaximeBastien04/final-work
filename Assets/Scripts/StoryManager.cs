@@ -1,18 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StoryManager : MonoBehaviour
 {
     public static StoryManager Instance;
-    public bool hasInteractedWithOldLady = false;
+
     public bool hasInteractedWithMeditationLady = false;
-    public bool hasDrunkCoffee = false;
-    public bool hasDrunkWater = false;
-    public bool hasGivenChildIceCream = false;
-    public bool hasGottenIceCream = false;
-    public bool hasWorked = false;
-    public bool hasPetDog = false;
-    public bool hasLookedAtFlowers = false;
+
+    public HashSet<string> completedInteractions = new HashSet<string>();
 
     private void Awake()
     {
@@ -25,5 +20,15 @@ public class StoryManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public bool HasCompleted(string interactionId)
+    {
+        return completedInteractions.Contains(interactionId);
+    }
+
+    public void MarkCompleted(string interactionId)
+    {
+        completedInteractions.Add(interactionId);
     }
 }

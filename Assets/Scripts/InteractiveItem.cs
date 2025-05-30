@@ -20,7 +20,6 @@ public class InteractiveItem : MonoBehaviour
     private static bool hasWorked = false;
 
     [Header("Specific items")]
-    private bool playerHasIceCream = false;
     [SerializeField] private GameObject iceCream;
     [SerializeField] private GameObject coffee;
     private bool hasStartedOldLadyDialogue = false;
@@ -67,6 +66,7 @@ public class InteractiveItem : MonoBehaviour
     public void TriggerInteraction()
     {
         string name = gameObject.name;
+        string interactionID = name;
         playerAnimator = player.GetComponent<Animator>();
         interactionManager = GameObject.Find("InteractionManager").GetComponent<InteractionManager>();
 
@@ -76,6 +76,17 @@ public class InteractiveItem : MonoBehaviour
             GameObject playerSit = transform.Find("ProtagonistSitting").gameObject;
             CameraFollow mainCamera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
 
+            if (storyManager.HasCompleted(interactionID))
+            {
+                DialogueManager.DialogueLine[] lastSentence = new DialogueManager.DialogueLine[]
+                {
+                    new DialogueManager.DialogueLine { text = "And come sit with me again sometime. The bench is always here.", pauseAfter = 0f }
+                };
+
+                dialogueManager.ReplaceText(lastSentence);
+                dialogueManager.Talk();
+                return;
+            }
             player.GetComponent<PlayerScript>().DisableMovement();
             player.GetComponent<SpriteRenderer>().enabled = false;
             playerSit.SetActive(true);
@@ -104,6 +115,8 @@ public class InteractiveItem : MonoBehaviour
                     hasBeenInteracted = false;
                     interactionAmount++;
                 }
+
+                storyManager.MarkCompleted(interactionID);
             };
         }
         else if (name == "MeditationLady")
@@ -112,6 +125,18 @@ public class InteractiveItem : MonoBehaviour
             GameObject playerMeditate = transform.Find("MeditationProtagonist").gameObject;
             CameraFollow mainCamera = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
             Animator eyesClosed = GameObject.Find("BlackSquare").GetComponent<Animator>();
+
+            if (storyManager.HasCompleted(interactionID))
+            {
+                DialogueManager.DialogueLine[] lastSentence = new DialogueManager.DialogueLine[]
+                {
+                    new DialogueManager.DialogueLine { text = "You're welcome to meditate here anytime.", pauseAfter = 0f }
+                };
+
+                dialogueManager.ReplaceText(lastSentence);
+                dialogueManager.Talk();
+                return;
+            }
 
             dialogueManager.Talk();
 
@@ -209,6 +234,8 @@ public class InteractiveItem : MonoBehaviour
                                             hasBeenInteracted = false;
                                             interactionAmount++;
                                         }
+
+                                        storyManager.MarkCompleted(interactionID);
                                     };
                                 };
                             },
@@ -242,8 +269,14 @@ public class InteractiveItem : MonoBehaviour
         }
         else if (name == "Glass")
         {
+            if (storyManager.HasCompleted(interactionID))
+            {
+                hasBeenInteracted = true;
+            }
+
             GlassPickup glassPickup = GetComponent<GlassPickup>();
             glassPickup.PickUp();
+            storyManager.MarkCompleted(interactionID);
         }
         else if (name == "LightSwitch")
         {
@@ -277,6 +310,12 @@ public class InteractiveItem : MonoBehaviour
         }
         else if (name == "WorkChair")
         {
+            if (storyManager.HasCompleted(interactionID))
+            {
+                GetComponent<BoxCollider2D>().enabled = false;
+                return;
+            }
+
             if (!hasWorked)
             {
                 WorkMinigame workMinigame = GameObject.Find("WorkMinigameManager").GetComponent<WorkMinigame>();
@@ -293,24 +332,48 @@ public class InteractiveItem : MonoBehaviour
         }
         else if (name == "Dog")
         {
-            // Dog pet animation
+            if (storyManager.HasCompleted(interactionID))
+            {
+                hasBeenInteracted = true;
+            }
+
             GetComponent<Animator>().SetTrigger("bark");
             GetComponent<AudioSource>().Play();
             playerAnimator.SetTrigger("pet");
+            storyManager.MarkCompleted(interactionID);
         }
         else if (name == "FlowerGarden")
         {
+            if (storyManager.HasCompleted(interactionID))
+            {
+                hasBeenInteracted = true;
+            }
+
             GetComponent<DialogueManager>().Talk();
+            storyManager.MarkCompleted(interactionID);
         }
         else if (name == "IceCreamVendor")
         {
             DialogueManager dialogueManager = GetComponent<DialogueManager>();
+
+            if (storyManager.HasCompleted(interactionID))
+            {
+                DialogueManager.DialogueLine[] lastSentence = new DialogueManager.DialogueLine[]
+                {
+                    new DialogueManager.DialogueLine { text = "Here you go.", pauseAfter = 0f }
+                };
+
+                dialogueManager.ReplaceText(lastSentence);
+                dialogueManager.Talk();
+                return;
+            }
+
             dialogueManager.Talk();
             dialogueManager.OnFinalLineStarted += () =>
             {
                 getIceCream = GetComponent<GetIceCream>();
                 getIceCream.IceCream();
-                playerHasIceCream = GetIceCream.iceCreamGiven;
+                storyManager.MarkCompleted(interactionID);
 
                 gameObject.tag = "HappinessIncrease";
                 if (interactionAmount == 0)
@@ -323,6 +386,18 @@ public class InteractiveItem : MonoBehaviour
         else if (name == "Child")
         {
             DialogueManager dialogueManager = GetComponent<DialogueManager>();
+
+            if (storyManager.HasCompleted(interactionID))
+            {
+                DialogueManager.DialogueLine[] lastSentence = new DialogueManager.DialogueLine[]
+                {
+                    new DialogueManager.DialogueLine { text = "Thanks!", pauseAfter = 0f }
+                };
+
+                dialogueManager.ReplaceText(lastSentence);
+                dialogueManager.Talk();
+                return;
+            }
 
             if (GetIceCream.iceCreamGiven)
             {
@@ -347,6 +422,7 @@ public class InteractiveItem : MonoBehaviour
 
                     gameObject.tag = "HappinessIncrease";
                     GetComponent<Animator>().SetTrigger("eat");
+                    storyManager.MarkCompleted(interactionID);
                     if (interactionAmount == 0)
                     {
                         hasBeenInteracted = false;
@@ -359,6 +435,11 @@ public class InteractiveItem : MonoBehaviour
         }
         else if (name == "CoffeeMachine")
         {
+            if (storyManager.HasCompleted(interactionID))
+            {
+                hasBeenInteracted = true;
+            }
+
             player.GetComponent<PlayerScript>().DisableMovement();
             Transform handTransform = player.transform.Find("lowerTorso").Find("midTorso").Find("upperTorso").Find("upperRightArm").Find("lowerRightArm").Find("rightHand");
 
@@ -367,14 +448,29 @@ public class InteractiveItem : MonoBehaviour
             coffee.transform.localRotation = new Quaternion(0, 0, 180, 0);
 
             playerAnimator.SetTrigger("drinking");
+            storyManager.MarkCompleted(interactionID);
         }
         else if (name == "Coworker")
         {
             DialogueManager dialogueManager = GetComponent<DialogueManager>();
 
+            if (storyManager.HasCompleted(interactionID))
+            {
+                DialogueManager.DialogueLine[] lastSentence = new DialogueManager.DialogueLine[]
+                {
+                    new DialogueManager.DialogueLine { text = "Try working a bit, it will cheer you up!", pauseAfter = 0f }
+                };
+
+                dialogueManager.ReplaceText(lastSentence);
+                dialogueManager.Talk();
+                return;
+            }
+
             dialogueManager.Talk();
             dialogueManager.OnFinalLineStarted += () =>
                 {
+                    storyManager.MarkCompleted(interactionID);
+
                     gameObject.tag = "HappinessIncrease";
                     if (interactionAmount == 0)
                     {

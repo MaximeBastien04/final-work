@@ -30,15 +30,6 @@ public class PostProcessingManager : MonoBehaviour
     void Start()
     {
         Volume volume = GetComponent<Volume>();
-
-        if (volume.profile.TryGet(out vignette))
-        {
-            Debug.LogWarning("Vignette found.");
-        }
-        else
-        {
-            Debug.LogWarning("Vignette not found in Volume Profile.");
-        }
     }
 
     /// <summary>
