@@ -25,7 +25,7 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI dialogueText;
     public DialogueLine[] dialogue;
     private int index = 0;
-    private bool playerIsClose;
+    public bool playerIsClose;
     private bool dialogueFinished = false;
 
     public System.Action OnFinalLineStarted;
@@ -87,7 +87,7 @@ public class DialogueManager : MonoBehaviour
             if (dialogueFinished)
             {
                 gameTitle.SetActive(true);
-                StartCoroutine(QuitGameAfterTitle(5f));
+                StartCoroutine(QuitGameAfterTitle(8f));
             }
         }
     }
@@ -335,7 +335,6 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator QuitGameAfterTitle(float duration)
     {
         yield return new WaitForSeconds(duration);
-        Debug.Log("Game Quit");
         SceneManager.LoadScene("HomeScene");
     }
 }
