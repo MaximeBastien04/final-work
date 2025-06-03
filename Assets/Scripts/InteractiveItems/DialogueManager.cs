@@ -61,7 +61,10 @@ public class DialogueManager : MonoBehaviour
         dialogueText = dialoguePanel.transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
         dialogueText.text = "";
         dialoguePanel.SetActive(false);
-        cutsceneManager = GameObject.Find("WindowInnerFrame").GetComponent<CutsceneManager>();
+        if (SceneManager.GetActiveScene().name == "HomeScene")
+        {
+            cutsceneManager = GameObject.Find("WindowInnerFrame").GetComponent<CutsceneManager>();
+        }
     }
 
     /// <summary>

@@ -3,12 +3,14 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class StoryManager : MonoBehaviour
 {
     public static StoryManager Instance;
 
     public bool hasInteractedWithMeditationLady = false;
+    public bool firstTimeSpawned = true;
 
     public HashSet<string> completedInteractions = new HashSet<string>();
 
@@ -30,6 +32,11 @@ public class StoryManager : MonoBehaviour
     void Update()
     {
         StoryFinished();
+
+        if (SceneManager.GetActiveScene().name == "Appartment")
+        {
+            RemoveAppartmentIntroCutscene();
+        }
     }
 
     public bool HasCompleted(string interactionId)
@@ -46,11 +53,9 @@ public class StoryManager : MonoBehaviour
     {
         Color bgColor = BackgroundColorManager.Instance.GetComponent<SpriteRenderer>().color;
         float vignetteValue = PostProcessingManager.Instance.vignette.intensity.value;
-        Debug.Log("Vignette value: " + vignetteValue);
 
         if (vignetteValue <= 0.1f)
         {
-            Debug.Log("Vignette value is under 0.1: " + vignetteValue);
             GameObject fadeInSquare = Instantiate(EndGamePrefab, Vector3.zero, Quaternion.identity);
             Image blackSquareImage = fadeInSquare.transform.Find("BlackSquare").GetComponent<Image>();
 
@@ -87,5 +92,19 @@ public class StoryManager : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         SceneManager.LoadScene("EndGame");
+    }
+
+    public void AppartmentIntroCutsceneBool()
+    {
+        firstTimeSpawned = false;
+    }
+
+    public void RemoveAppartmentIntroCutscene()
+    {
+        if (!firstTimeSpawned)
+        {
+            GameObject.FindWithTag("Player").GetComponent<PlayableDirector>().enabled = false;
+            Destroy(GameObject.Find("BlackSquareIntro"));
+        }
     }
 }
