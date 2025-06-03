@@ -5,7 +5,7 @@ using System.Collections;
 
 public class PostProcessingManager : MonoBehaviour
 {
-    private Vignette vignette;
+    public Vignette vignette;
     private Coroutine vignetteRoutine;
 
     public static PostProcessingManager Instance;
@@ -30,6 +30,7 @@ public class PostProcessingManager : MonoBehaviour
     void Start()
     {
         Volume volume = GetComponent<Volume>();
+        volume.profile.TryGet(out vignette);
     }
 
     /// <summary>

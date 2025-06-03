@@ -487,6 +487,7 @@ public class InteractiveItem : MonoBehaviour
                 discoverySFX.Play();
                 bgcManager.UpdateBackgroundColor();
                 postProManager.DecreaseVignetteSmoothly();
+                storyManager.StoryFinished();
             }
         }
 
