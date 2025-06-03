@@ -27,6 +27,11 @@ public class StoryManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        StoryFinished();
+    }
+
     public bool HasCompleted(string interactionId)
     {
         return completedInteractions.Contains(interactionId);
@@ -36,14 +41,16 @@ public class StoryManager : MonoBehaviour
     {
         completedInteractions.Add(interactionId);
     }
-    
+
     public void StoryFinished()
     {
         Color bgColor = BackgroundColorManager.Instance.GetComponent<SpriteRenderer>().color;
         float vignetteValue = PostProcessingManager.Instance.vignette.intensity.value;
+        Debug.Log("Vignette value: " + vignetteValue);
 
         if (vignetteValue <= 0.1f)
         {
+            Debug.Log("Vignette value is under 0.1: " + vignetteValue);
             GameObject fadeInSquare = Instantiate(EndGamePrefab, Vector3.zero, Quaternion.identity);
             Image blackSquareImage = fadeInSquare.transform.Find("BlackSquare").GetComponent<Image>();
 
@@ -51,7 +58,8 @@ public class StoryManager : MonoBehaviour
 
 
             GameObject.FindWithTag("Player").GetComponent<PlayerScript>().DisableMovement();
-            StartCoroutine(FadeIn(blackSquareImage, 15f));
+            StartCoroutine(FadeIn(blackSquareImage, 10f));
+            StartCoroutine(WaitBeforeLoadingEndScene(6f));
         }
     }
 
@@ -72,5 +80,12 @@ public class StoryManager : MonoBehaviour
         }
 
         image.color = endColor;
+    }
+
+
+    private IEnumerator WaitBeforeLoadingEndScene(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        SceneManager.LoadScene("EndGame");
     }
 }

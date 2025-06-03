@@ -43,6 +43,9 @@ public class DialogueManager : MonoBehaviour
     private System.Action onYes;
     private System.Action onNo;
 
+    [Header("End Game")]
+    public GameObject gameTitle;
+
     void Awake()
     {
         controls = new PlayerControls();
@@ -69,6 +72,15 @@ public class DialogueManager : MonoBehaviour
             if (dialogueFinished)
             {
                 StartCoroutine(SceneTransitionManager.Instance.LoadSceneAfterDelay(5f, "Appartment"));
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "EndGame")
+        {
+            controls.Gameplay.Interact.performed += ctx => OnInteract();
+            if (dialogueFinished)
+            {
+                gameTitle.SetActive(true);
+                StartCoroutine(QuitGameAfterTitle(5f));
             }
         }
     }
@@ -310,5 +322,13 @@ public class DialogueManager : MonoBehaviour
             }
         }
         choicePanel.SetActive(true);
+    }
+
+
+    private IEnumerator QuitGameAfterTitle(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        Debug.Log("Game Quit");
+        Application.Quit();
     }
 }

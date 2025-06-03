@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasInteractedWithMeditationLady: 0
-  EndGamePrefab: {fileID: 0}
+  EndGamePrefab: {fileID: 153461488889339215, guid: 9afe97e9206a913478a8438b17d18120, type: 3}
 --- !u!4 &109438421
 Transform:
   m_ObjectHideFlags: 0

@@ -104,20 +104,18 @@ public class InteractiveItem : MonoBehaviour
 
             dialogueManager.OnFinalLineStarted += () =>
             {
+                // Trigger happiness increase BEFORE the player stands up
+                TriggerHappinessIncrease();
+
+                // Now wrap up the interaction
                 player.GetComponent<SpriteRenderer>().enabled = true;
                 playerSit.SetActive(false);
                 player.GetComponent<PlayerScript>().EnableMovement();
                 mainCamera.target = player.transform;
 
-                gameObject.tag = "HappinessIncrease";
-                if (interactionAmount == 0)
-                {
-                    hasBeenInteracted = false;
-                    interactionAmount++;
-                }
-
                 storyManager.MarkCompleted(interactionID);
             };
+
         }
         else if (name == "MeditationLady")
         {
@@ -375,12 +373,7 @@ public class InteractiveItem : MonoBehaviour
                 getIceCream.IceCream();
                 storyManager.MarkCompleted(interactionID);
 
-                gameObject.tag = "HappinessIncrease";
-                if (interactionAmount == 0)
-                {
-                    hasBeenInteracted = false;
-                    interactionAmount++;
-                }
+                TriggerHappinessIncrease();
             };
         }
         else if (name == "Child")
@@ -420,7 +413,7 @@ public class InteractiveItem : MonoBehaviour
                         iceCream.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
                     }
 
-                    gameObject.tag = "HappinessIncrease";
+                    TriggerHappinessIncrease();
                     GetComponent<Animator>().SetTrigger("eat");
                     storyManager.MarkCompleted(interactionID);
                     if (interactionAmount == 0)
@@ -470,8 +463,7 @@ public class InteractiveItem : MonoBehaviour
             dialogueManager.OnFinalLineStarted += () =>
                 {
                     storyManager.MarkCompleted(interactionID);
-
-                    gameObject.tag = "HappinessIncrease";
+                    TriggerHappinessIncrease();
                     if (interactionAmount == 0)
                     {
                         hasBeenInteracted = false;
@@ -487,7 +479,6 @@ public class InteractiveItem : MonoBehaviour
                 discoverySFX.Play();
                 bgcManager.UpdateBackgroundColor();
                 postProManager.DecreaseVignetteSmoothly();
-                storyManager.StoryFinished();
             }
         }
 
@@ -497,6 +488,28 @@ public class InteractiveItem : MonoBehaviour
             hasBeenInteracted = true;
         }
     }
+
+    private void TriggerHappinessIncrease()
+    {
+        Debug.Log("Happiness increase");
+        gameObject.tag = "HappinessIncrease";
+        if (interactionAmount == 0)
+        {
+            hasBeenInteracted = false;
+            interactionAmount++;
+        }
+
+        if (!hasBeenInteracted)
+        {
+            discoverySFX.Play();
+            bgcManager.UpdateBackgroundColor();
+            postProManager.DecreaseVignetteSmoothly();
+            storyManager.StoryFinished();
+        }
+
+        hasBeenInteracted = true;
+    }
+
 
     /// <summary>
     /// Coroutine that starts the dialogue with the Old Lady after a delay.
