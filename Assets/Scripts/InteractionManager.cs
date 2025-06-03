@@ -1,8 +1,6 @@
 using System.Collections;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.UIElements;
 
 public class InteractionManager : MonoBehaviour
 {
@@ -13,9 +11,7 @@ public class InteractionManager : MonoBehaviour
     public GameObject buttonPrefab;
     private GameObject interactionButton;
     private SpriteRenderer buttonSpriteRenderer;
-    private Animator buttonAnimator;
     private Light2D buttonGlow;
-    [SerializeField] private AnimatorController buttonPressController;
     private Coroutine fadeCoroutine;
     private GameObject currentTarget;
     public int interactionCounter = 0;
@@ -37,7 +33,6 @@ public class InteractionManager : MonoBehaviour
     {
         interactionButton = Instantiate(buttonPrefab, transform);
 
-        buttonAnimator = interactionButton.GetComponent<Animator>();
         buttonSpriteRenderer = interactionButton.GetComponent<SpriteRenderer>();
         buttonGlow = interactionButton.GetComponent<Light2D>();
     }
