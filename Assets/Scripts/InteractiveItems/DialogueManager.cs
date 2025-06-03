@@ -46,6 +46,8 @@ public class DialogueManager : MonoBehaviour
     [Header("End Game")]
     public GameObject gameTitle;
 
+    public CutsceneManager cutsceneManager;
+
     void Awake()
     {
         controls = new PlayerControls();
@@ -59,6 +61,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText = dialoguePanel.transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
         dialogueText.text = "";
         dialoguePanel.SetActive(false);
+        cutsceneManager = GameObject.Find("WindowInnerFrame").GetComponent<CutsceneManager>();
     }
 
     /// <summary>
@@ -66,7 +69,8 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "HomeScene")
+        // Debug.Log(cutsceneManager.windowIsClosed);
+        if (SceneManager.GetActiveScene().name == "HomeScene" && cutsceneManager.windowIsClosed)
         {
             controls.Gameplay.Interact.performed += ctx => OnInteract();
             if (dialogueFinished)
@@ -329,6 +333,6 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         Debug.Log("Game Quit");
-        Application.Quit();
+        SceneManager.LoadScene("HomeScene");
     }
 }

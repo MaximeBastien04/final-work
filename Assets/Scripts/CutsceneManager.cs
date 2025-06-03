@@ -14,6 +14,7 @@ public class CutsceneManager : MonoBehaviour
     public GameObject homeMainMenu;
     public GameObject homeMainMenuButtons;
     public GameObject fadeToBlackSquare;
+    public bool windowIsClosed = false;
 
     /// <summary>
     /// Enables all buttons under homeMainMenuButtons if the active scene is "HomeScene".
@@ -69,5 +70,10 @@ public class CutsceneManager : MonoBehaviour
     public void LoadWorkScene()
     {
         SceneManager.LoadScene("Work");
+    }
+
+    public void CloseWindowBool()
+    {
+        windowIsClosed = true;
     }
 }

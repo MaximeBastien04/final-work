@@ -9,7 +9,10 @@ public class EndGameScript : MonoBehaviour
         Debug.Log("Start");
         dialogueManager = GetComponent<DialogueManager>();
         StartCoroutine(WaitForEndDialogue(6f));
-        GameObject.Destroy(GameObject.Find("Global Volume"));
+        Destroy(GameObject.Find("Global Volume"));
+        Destroy(GameObject.Find("StoryManager"));
+        Destroy(GameObject.Find("StoryManager"));
+        Destroy(GameObject.Find("InteractionManager"));
     }
 
     // Update is called once per frame
