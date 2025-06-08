@@ -531,6 +531,7 @@ MonoBehaviour:
     pauseAfter: 1
   - text: There will always be ...
     pauseAfter: 1
+  playerIsClose: 0
   wordSpeed: 0.06
   choicePanel: {fileID: 0}
   yesButton: {fileID: 0}
@@ -577,7 +578,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: c4fb10fdf0508e44dbc5e62e6abee8c7, type: 3}
   m_Resource: {fileID: 8300000, guid: c4fb10fdf0508e44dbc5e62e6abee8c7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.9
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
