@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
@@ -10,6 +11,14 @@ public class MenuManager : MonoBehaviour
     [Header("First Selected Options")]
     [SerializeField] private GameObject mainMenuFirst;
     [SerializeField] private GameObject quitMenuFirst;
+
+    [Header("Home Scene Intro Cutscene")]
+    [SerializeField] private GameObject IntroCutscene;
+    
+    [Header("Button Audio")]
+    [SerializeField] private AudioSource buttonPressSFX;
+
+
 
     private bool isPaused;
 
@@ -95,11 +104,13 @@ public class MenuManager : MonoBehaviour
     public void OnQuitPress()
     {
         OpenQuitMenu();
+        buttonPressSFX.Play();
     }
 
     public void OnResumePress()
     {
         Unpause();
+        buttonPressSFX.Play();
     }
 
     #endregion
@@ -109,12 +120,24 @@ public class MenuManager : MonoBehaviour
     public void OnQuitNoPress()
     {
         OpenMainMenu();
+        buttonPressSFX.Play();
     }
 
     public void OnQuitYesPress()
     {
         Application.Quit();
+        buttonPressSFX.Play();
     }
 
+    #endregion
+
+
+    #region Home Scene Intro Cutscene
+    public void StartIntroCutscene()
+    {
+        IntroCutscene.SetActive(true);
+        IntroCutscene.GetComponent<PlayableDirector>().Play();
+        buttonPressSFX.Play();
+    }
     #endregion
 }

@@ -1530,6 +1530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasInteractedWithMeditationLady: 0
+  firstTimeSpawned: 1
   EndGamePrefab: {fileID: 153461488889339215, guid: 9afe97e9206a913478a8438b17d18120, type: 3}
 --- !u!4 &109438421
 Transform:
@@ -2689,6 +2690,7 @@ MonoBehaviour:
   homeMainMenu: {fileID: 0}
   homeMainMenuButtons: {fileID: 0}
   fadeToBlackSquare: {fileID: 0}
+  windowIsClosed: 0
 --- !u!1 &203059121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3497,10 +3499,13 @@ MonoBehaviour:
     pauseAfter: 5
   - text: And come sit with me again sometime. The bench is always here.
     pauseAfter: 0
+  playerIsClose: 0
   wordSpeed: 0.06
   choicePanel: {fileID: 0}
   yesButton: {fileID: 0}
   noButton: {fileID: 0}
+  gameTitle: {fileID: 0}
+  cutsceneManager: {fileID: 0}
 --- !u!1 &254558624
 GameObject:
   m_ObjectHideFlags: 0
@@ -7396,10 +7401,13 @@ MonoBehaviour:
     pauseAfter: 0
   - text: Here you go.
     pauseAfter: 0
+  playerIsClose: 0
   wordSpeed: 0.05
   choicePanel: {fileID: 0}
   yesButton: {fileID: 0}
   noButton: {fileID: 0}
+  gameTitle: {fileID: 0}
+  cutsceneManager: {fileID: 0}
 --- !u!114 &559191046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7783,10 +7791,13 @@ MonoBehaviour:
     pauseAfter: 0
   - text: Why don't you meditate with me for a bit?
     pauseAfter: 0
+  playerIsClose: 0
   wordSpeed: 0.06
   choicePanel: {fileID: 648513994}
   yesButton: {fileID: 1321335788}
   noButton: {fileID: 1125795573}
+  gameTitle: {fileID: 0}
+  cutsceneManager: {fileID: 0}
 --- !u!1 &600812355
 GameObject:
   m_ObjectHideFlags: 0
@@ -8214,10 +8225,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1845082083}
   - {fileID: 1191283148}
   - {fileID: 983562118}
   - {fileID: 648513995}
+  - {fileID: 1845082083}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -9557,10 +9568,13 @@ MonoBehaviour:
   dialogue:
   - text: Those are some nice flowers.
     pauseAfter: 0
+  playerIsClose: 0
   wordSpeed: 0.045
   choicePanel: {fileID: 0}
   yesButton: {fileID: 0}
   noButton: {fileID: 0}
+  gameTitle: {fileID: 0}
+  cutsceneManager: {fileID: 0}
 --- !u!1 &713508081
 GameObject:
   m_ObjectHideFlags: 0
@@ -10298,6 +10312,135 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &793431924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 793431926}
+  - component: {fileID: 793431925}
+  m_Layer: 0
+  m_Name: ButtonPressSFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &793431925
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793431924}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a1d8fa03137c8f24181e68c4e3706536, type: 3}
+  m_Resource: {fileID: 8300000, guid: a1d8fa03137c8f24181e68c4e3706536, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.8
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &793431926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793431924}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.594528, y: 2.6004317, z: -0.043737292}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1077078132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &806685962
 GameObject:
@@ -13291,6 +13434,7 @@ Transform:
   m_Children:
   - {fileID: 1612476418}
   - {fileID: 1663207612}
+  - {fileID: 793431926}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1086730290
@@ -20336,10 +20480,13 @@ MonoBehaviour:
     pauseAfter: 0
   - text: My ice cream fell on the floor!
     pauseAfter: 0
+  playerIsClose: 0
   wordSpeed: 0.03
   choicePanel: {fileID: 0}
   yesButton: {fileID: 0}
   noButton: {fileID: 0}
+  gameTitle: {fileID: 0}
+  cutsceneManager: {fileID: 0}
 --- !u!61 &1568710279
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22904,7 +23051,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 8004496490049070689, guid: 67fba9072b5d525459a42db1bb2312c7, type: 3}
-  buttonPressController: {fileID: 9100000, guid: adba8428dfc07284cb779b0ee1491c23, type: 2}
   interactionCounter: 0
 --- !u!4 &1785673216
 Transform:
@@ -23554,6 +23700,8 @@ MonoBehaviour:
   quitMenuCanvas: {fileID: 2034413565}
   mainMenuFirst: {fileID: 2026673545}
   quitMenuFirst: {fileID: 2075836089}
+  IntroCutscene: {fileID: 0}
+  buttonPressSFX: {fileID: 793431925}
 --- !u!1 &1849224356
 GameObject:
   m_ObjectHideFlags: 0

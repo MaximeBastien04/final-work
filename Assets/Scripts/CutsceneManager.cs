@@ -12,6 +12,7 @@ public class CutsceneManager : MonoBehaviour
     public GameObject homeSceneWindow;
     public GameObject homeMainMenu;
     public GameObject homeMainMenuButtons;
+    [SerializeField] private AudioSource windowCloseSFX;
     public GameObject fadeToBlackSquare;
     public bool windowIsClosed = false;
 
@@ -35,6 +36,7 @@ public class CutsceneManager : MonoBehaviour
     public void CloseWindow()
     {
         GameObject.Find("Window").GetComponent<PlayableDirector>().Play();
+        windowCloseSFX.Play();
     }
 
     public void SetActiveWindow()
