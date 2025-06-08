@@ -23,6 +23,16 @@ public class WorkMinigame : MonoBehaviour
     private CameraFollow mainCamera;
     [SerializeField] private GameObject interactableItem;
 
+    PlayerControls controls;
+    private bool isInteracting = false;
+
+    void Awake()
+    {
+        controls = new PlayerControls();
+        controls.Gameplay.Interact.started += ctx => isInteracting = true;
+        controls.Gameplay.Interact.canceled += ctx => isInteracting = false;
+    }
+
     /// <summary>
     /// Initializes references and disables the minigame visuals on start.
     /// </summary>
@@ -36,11 +46,24 @@ public class WorkMinigame : MonoBehaviour
         discoverySFX = GameObject.Find("DiscoverySFX").GetComponent<AudioSource>();
         bgcManager = GameObject.Find("BackgroundColor").GetComponent<BackgroundColorManager>();
         postProManager = GameObject.Find("Global Volume").GetComponent<PostProcessingManager>();
+
     }
+
+    void OnEnable()
+    {
+        controls.Gameplay.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Gameplay.Disable();
+    }
+
 
     void Update()
     {
         MinigameLogic();
+        Debug.Log(isInteracting);
     }
 
     /// <summary>
@@ -60,7 +83,7 @@ public class WorkMinigame : MonoBehaviour
 
             MinigameVisual.SetActive(true);
 
-            if (Input.GetKey(KeyCode.E) && completionCircle.fillAmount < 1)
+            if (isInteracting && completionCircle.fillAmount < 1)
             {
                 completionCircle.fillAmount += fillSpeed * Time.deltaTime;
 
