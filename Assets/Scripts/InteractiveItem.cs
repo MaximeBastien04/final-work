@@ -272,6 +272,7 @@ public class InteractiveItem : MonoBehaviour
                 hasBeenInteracted = true;
             }
 
+            player.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, 0);
             GlassPickup glassPickup = GetComponent<GlassPickup>();
             glassPickup.PickUp();
             storyManager.MarkCompleted(interactionID);
@@ -451,6 +452,7 @@ public class InteractiveItem : MonoBehaviour
                 hasBeenInteracted = true;
             }
 
+            player.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, 0);
             player.GetComponent<PlayerScript>().DisableMovement();
             Transform handTransform = player.transform.Find("lowerTorso").Find("midTorso").Find("upperTorso").Find("upperRightArm").Find("lowerRightArm").Find("rightHand");
 

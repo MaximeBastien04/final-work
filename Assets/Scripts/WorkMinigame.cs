@@ -63,7 +63,6 @@ public class WorkMinigame : MonoBehaviour
     void Update()
     {
         MinigameLogic();
-        Debug.Log(isInteracting);
     }
 
     /// <summary>
