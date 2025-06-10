@@ -337,6 +337,8 @@ public class InteractiveItem : MonoBehaviour
 
             GetComponent<Animator>().SetTrigger("bark");
             GetComponent<AudioSource>().Play();
+            player.GetComponent<PlayerScript>().DisableMovement();
+            player.GetComponent<PlayerScript>().DisableInteraction();
             playerAnimator.SetTrigger("pet");
             storyManager.MarkCompleted(interactionID);
         }

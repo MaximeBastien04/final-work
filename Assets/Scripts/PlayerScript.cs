@@ -87,6 +87,9 @@ public class PlayerScript : MonoBehaviour
     public void EnableMovement() => canMove = true;
     public void DisableMovement() => canMove = false;
 
+    public void DisableInteraction() => interactionBlocked = true;
+    public void EnableInteraction() => interactionBlocked = false;
+
     /// <summary>
     /// Calls the PutDown method on the GlassPickup component.
     /// </summary>

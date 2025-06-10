@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip printer;
     public AudioClip alarmClock;
 
-    private AudioManager Instance;
+    private static AudioManager Instance;
 
     void Awake()
     {
