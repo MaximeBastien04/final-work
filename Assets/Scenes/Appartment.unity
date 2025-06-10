@@ -5189,6 +5189,53 @@ Transform:
   - {fileID: 466809222}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2033876518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2033876520}
+  - component: {fileID: 2033876519}
+  m_Layer: 0
+  m_Name: IceCreamRestorer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2033876519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033876518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc0f99708615674d8975188e9bf3d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iceCreamPrefab: {fileID: 521278944004181033, guid: 5b4233f4fb93bbb4a89697b23c7a8b6a, type: 3}
+  handTransform: {fileID: 4494395263702522263}
+  playerRightArm: {fileID: 4494395263702522262}
+--- !u!4 &2033876520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033876518}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.842887, y: -0.21710134, z: 0.98}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2105695097
 GameObject:
   m_ObjectHideFlags: 0
@@ -5721,6 +5768,16 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &4494395263702522262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6235472753284371576, guid: 4c15e3d35e6c4874ab7b995ac538e943, type: 3}
+  m_PrefabInstance: {fileID: 4494395263702522257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4494395263702522263 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7820057395048156163, guid: 4c15e3d35e6c4874ab7b995ac538e943, type: 3}
+  m_PrefabInstance: {fileID: 4494395263702522257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8396067494419023911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5861,6 +5918,7 @@ MonoBehaviour:
   homeSceneWindow: {fileID: 0}
   homeMainMenu: {fileID: 0}
   homeMainMenuButtons: {fileID: 0}
+  windowCloseSFX: {fileID: 0}
   fadeToBlackSquare: {fileID: 0}
   windowIsClosed: 0
 --- !u!1001 &8413185794823315001
@@ -5966,3 +6024,4 @@ SceneRoots:
   - {fileID: 572132655}
   - {fileID: 1165636172}
   - {fileID: 129280744}
+  - {fileID: 2033876520}

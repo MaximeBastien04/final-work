@@ -392,7 +392,7 @@ public class InteractiveItem : MonoBehaviour
                 return;
             }
 
-            if (GetIceCream.iceCreamGiven)
+            if (PlayerInventory.Instance.hasIceCream)
             {
                 DialogueManager.DialogueLine[] newDialogue = new DialogueManager.DialogueLine[]
                 {
@@ -404,13 +404,29 @@ public class InteractiveItem : MonoBehaviour
 
                 dialogueManager.OnFinalLineStarted += () =>
                 {
-                    if (iceCream.activeSelf)
+
+                    if (PlayerInventory.Instance.hasIceCream)
                     {
                         Transform leftHand = transform.Find("Stomach").Find("LowerTorso").Find("UpperTorso").Find("UpperLeftArm").Find("LowerLeftArm").Find("LeftHand");
-                        iceCream.transform.SetParent(leftHand);
-                        iceCream.transform.localPosition = new Vector3(0.2f, -0.15f, 0);
-                        iceCream.transform.localRotation = new Quaternion(0, 0, 210, 0);
-                        iceCream.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+                        GameObject childIceCream = Instantiate(iceCream, leftHand);
+                        childIceCream.transform.localPosition = new Vector3(0.2f, -0.15f, 0);
+                        childIceCream.transform.localRotation = new Quaternion(0, 0, 210, 0);
+                        childIceCream.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+
+                        PlayerInventory.Instance.hasIceCream = false;
+                        Transform hand = GameObject.FindWithTag("Player")
+                            .transform.Find("lowerTorso/midTorso/upperTorso/upperRightArm/lowerRightArm/rightHand");
+
+                        Transform iceCreaminhand = hand?.Find("IceCream");
+
+                        if (iceCream != null)
+                        {
+                            Destroy(iceCreaminhand.gameObject);  // ✅ This destroys the whole GameObject properly
+                        }
+                        else
+                        {
+                            Debug.LogWarning("IceCream not found in rightHand!");
+                        }
                     }
 
                     TriggerHappinessIncrease();
