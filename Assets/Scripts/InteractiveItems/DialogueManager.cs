@@ -83,7 +83,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "EndGame")
         {
-            controls.Gameplay.Interact.performed += ctx => OnInteract();
+            // controls.Gameplay.Interact.performed += ctx => OnInteract();
             if (dialogueFinished)
             {
                 gameTitle.SetActive(true);
