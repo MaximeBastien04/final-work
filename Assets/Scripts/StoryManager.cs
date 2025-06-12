@@ -56,6 +56,7 @@ public class StoryManager : MonoBehaviour
 
         if (vignetteValue <= 0.1f)
         {
+            InteractiveItem.hasWorked = false;
             GameObject fadeInSquare = Instantiate(EndGamePrefab, Vector3.zero, Quaternion.identity);
             Image blackSquareImage = fadeInSquare.transform.Find("BlackSquare").GetComponent<Image>();
 

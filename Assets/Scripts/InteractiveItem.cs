@@ -17,7 +17,7 @@ public class InteractiveItem : MonoBehaviour
     private bool hasBeenInteracted = false;
     private int interactionAmount = 0;
     private AudioSource discoverySFX;
-    private static bool hasWorked = false;
+    public static bool hasWorked = false;
 
     [Header("Specific items")]
     [SerializeField] private GameObject iceCream;
@@ -58,6 +58,11 @@ public class InteractiveItem : MonoBehaviour
         {
             InteractionManager.Instance?.HideButton();
         }
+    }
+
+    void Update()
+    {
+        Debug.Log(hasWorked);
     }
 
     /// <summary>
